@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns="sap.m">
+	<Dialog id="chooseFileDialogId" title="{i18n>uploadFormDataTitle}" draggable="true" resizable="true">
+		<content >
+			<u:FileUploader class="sapUiMediumMargin" 
+			id="fileUploader"
+			name="dataFileUpload" 
+			sendXHR="true"
+			width="400px" 
+			useMultipart="false"
+			multiple="false"
+			tooltip="{i18n>uploadDataTooltip}"
+			sameFilenameAllowed="true" 
+			uploadStart="onUploadStart"
+			uploadComplete="onUploadComplete"
+			typeMissmatch="onTypeMissmatch" 
+			style="Emphasized" 
+			placeholder="{i18n>messageForChoosingFile}" 
+			fileType="xlsx,xls"/>
+		</content>
+		<beginButton >
+			<Button id="idDialogButtonUpload" text="{i18n>uploadButton}" press="onUploadPress"/>
+		</beginButton>
+		<endButton >
+			<Button id="idDialogButtonClose" text="{i18n>closeButton}" press="onCloseImportDialog"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

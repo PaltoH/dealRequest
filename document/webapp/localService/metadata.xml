@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zap_ui_document" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="BusinessAreaVhType" sap:label="Business Area" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessArea"/>
+                </Key>
+                <Property Name="BusinessArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="BusinessArea_Text" sap:label="Business Area"/>
+                <Property Name="BusinessArea_Text" Type="Edm.String" MaxLength="30" sap:label="BA Description" sap:quickinfo="Business Area Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="BusinessAreaName" Type="Edm.String" MaxLength="30" sap:label="BA Description" sap:quickinfo="Business Area Description"/>
+            </EntityType>
+            <EntityType Name="CostCenterVHType" sap:label="Cost Center" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CostCenter"/>
+                    <PropertyRef Name="ControllingArea"/>
+                    <PropertyRef Name="ValidityEndDate"/>
+                </Key>
+                <Property Name="CostCenter" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/>
+                <Property Name="ControllingArea" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+                <Property Name="ValidityEndDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Valid To" sap:quickinfo="Valid To Date"/>
+                <Property Name="CostCenterName" Type="Edm.String" MaxLength="20" sap:label="Cost Center Name"/>
+            </EntityType>
+            <EntityType Name="CompanyCodeVHType" sap:label="Document Complany Code" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+            </EntityType>
+            <EntityType Name="DocumentChangeDocType" sap:label="Change Doc" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ChangeDocObject"/>
+                    <PropertyRef Name="ChangeDocObjectClass"/>
+                    <PropertyRef Name="ChangeDocument"/>
+                    <PropertyRef Name="DatabaseTable"/>
+                    <PropertyRef Name="ChangeDocTableKey"/>
+                    <PropertyRef Name="ChangeDocDatabaseTableField"/>
+                    <PropertyRef Name="ChangeDocItemChangeType"/>
+                </Key>
+                <Property Name="ChangeDocObject" Type="Edm.String" Nullable="false" MaxLength="90" sap:display-format="UpperCase" sap:label="Object Value"/>
+                <Property Name="ChangeDocObjectClass" Type="Edm.String" Nullable="false" MaxLength="15" sap:display-format="UpperCase" sap:label="Change Doc. Object" sap:quickinfo="Object class"/>
+                <Property Name="ChangeDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number" sap:quickinfo="Change Number of Document"/>
+                <Property Name="DatabaseTable" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Table Name"/>
+                <Property Name="ChangeDocTableKey" Type="Edm.String" Nullable="false" MaxLength="70" sap:display-format="UpperCase" sap:label="Table Key" sap:quickinfo="Changed table record key"/>
+                <Property Name="ChangeDocDatabaseTableField" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Field Name"/>
+                <Property Name="ChangeDocItemChangeType" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Change Indicator" sap:quickinfo="Type of Change"/>
+                <Property Name="ChangeDocNewFieldValue" Type="Edm.String" MaxLength="254" sap:display-format="UpperCase" sap:text="DocumentStatusText" sap:label="Status"/>
+                <Property Name="DocumentStatusCriticality" Type="Edm.Byte"/>
+                <Property Name="DocumentStatusText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+                <Property Name="ChgDocumentNewFieldValueReason" Type="Edm.String" MaxLength="254" sap:display-format="UpperCase" sap:label="Reason"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="UserDescription" sap:label="Changed By"/>
+                <Property Name="UserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="User Description"/>
+                <Property Name="DocumentChgDocDteTime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Changed At"/>
+            </EntityType>
+            <EntityType Name="DirectionVHType" sap:label="Document Direction" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DocumentDirection"/>
+                </Key>
+                <Property Name="DocumentDirection" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="DocumentDirection_Text" sap:label="Direction"/>
+                <Property Name="DocumentDirection_Text" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentDirectionText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="ZAP_C_DocumentStatusVHType" sap:label="Document Status" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DocumentStatus"/>
+                </Key>
+                <Property Name="DocumentStatus" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative" sap:text="DocumentStatus_Text" sap:label="Status"/>
+                <Property Name="DocumentStatus_Text" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentStatusText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="DocumentType" sap:label="Document Projection" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DocumentUUID"/>
+                </Key>
+                <Property Name="SetDocumentStatusToCancelled_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetDocumentStatusToCreated_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetDocumentStatusToRejected_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetDocumentStatusToReleased_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocumentUUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="ParentDocumentUUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentHashKey" Type="Edm.String" MaxLength="40" sap:label="Hash Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentCompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="DocumentCompanyCodeText" sap:label="Company" sap:quickinfo="Company Code" sap:value-list="standard"/>
+                <Property Name="DocumentDirection" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="DocumentDirectionText" sap:label="Buy or Sell" sap:quickinfo="Direction" sap:value-list="fixed-values"/>
+                <Property Name="DocumentBusinessArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Area" sap:value-list="standard"/>
+                <Property Name="DocumentValidFromDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Valid-From Date"/>
+                <Property Name="DocumentCostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="DocumentCostCenterText" sap:label="Cost Center" sap:value-list="standard"/>
+                <Property Name="DocumentPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="DocumentPlantText" sap:label="Plant" sap:value-list="standard"/>
+                <Property Name="DocumentRemarkNote" Type="Edm.String" MaxLength="40" sap:label="Remark"/>
+                <Property Name="DocumentIdentifier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentPricingPeriodStart" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Pricing Start Date" sap:quickinfo="Pricing Period Start"/>
+                <Property Name="DocumentPricingPeriodEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Pricing End Date" sap:quickinfo="Pricing Period End"/>
+                <Property Name="DocumentQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="DocumentQuantityUnit" sap:label="Quantity"/>
+                <Property Name="DocumentQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measure" sap:quickinfo="Unit of Measure for the Commodity" sap:creatable="false" sap:updatable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="DocumentLogHandle" Type="Edm.String" MaxLength="22" sap:label="Log Handle" sap:quickinfo="Application Log Handle"/>
+                <Property Name="DocumentVersion" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Version No." sap:quickinfo="Version"/>
+                <Property Name="DocumentStatus" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:text="DocumentStatusText" sap:label="Status" sap:value-list="standard"/>
+                <Property Name="DocumentStatusChangeReason" Type="Edm.String" MaxLength="255" sap:label="Status Change Reason" sap:quickinfo="Document Status Change Reason"/>
+                <Property Name="DocumentCreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="User Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentCreatedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created At" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="User Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Changed At" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+                <Property Name="DocumentStatusCriticality" Type="Edm.Byte"/>
+                <Property Name="DocumentChangeDocID" Type="Edm.String" MaxLength="32"/>
+                <Property Name="DocumentCompanyCodeText" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentCostCenterText" Type="Edm.String" MaxLength="20" sap:label="Cost Center Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentDirectionText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentStatusText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentPlantText" Type="Edm.String" MaxLength="30" sap:label="Plant Name" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_DocumentChangeDoc" Relationship="cds_zap_ui_document.assoc_3FF01B6777D3E6C2D97B5A71D4530B0B" FromRole="FromRole_assoc_3FF01B6777D3E6C2D97B5A71D4530B0B" ToRole="ToRole_assoc_3FF01B6777D3E6C2D97B5A71D4530B0B"/>
+                <NavigationProperty Name="to_DocumentVersionTP" Relationship="cds_zap_ui_document.assoc_630FDA1EB6D9E02F54F690C6055B7189" FromRole="FromRole_assoc_630FDA1EB6D9E02F54F690C6055B7189" ToRole="ToRole_assoc_630FDA1EB6D9E02F54F690C6055B7189"/>
+            </EntityType>
+            <EntityType Name="DocumentVersionType" sap:label="Document Version Projection" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DocumentUUID"/>
+                </Key>
+                <Property Name="DocumentUUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="ParentDocumentUUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentHashKey" Type="Edm.String" MaxLength="40" sap:label="Hash Key"/>
+                <Property Name="DocumentCompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="DocumentCompanyCodeText" sap:label="Company Code"/>
+                <Property Name="DocumentDirection" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="DocumentDirectionText" sap:label="Direction"/>
+                <Property Name="DocumentBusinessArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Area"/>
+                <Property Name="DocumentValidFromDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid-From Date"/>
+                <Property Name="DocumentCostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="DocumentCostCenterText" sap:label="Cost Center"/>
+                <Property Name="DocumentPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="DocumentPlantText" sap:label="Plant"/>
+                <Property Name="DocumentRemarkNote" Type="Edm.String" MaxLength="40" sap:label="Remark"/>
+                <Property Name="DocumentIdentifier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document ID"/>
+                <Property Name="DocumentPricingPeriodStart" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Pricing Period Start"/>
+                <Property Name="DocumentPricingPeriodEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Pricing Period End"/>
+                <Property Name="DocumentQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="DocumentQuantityUnit" sap:label="Qty" sap:quickinfo="Quantity"/>
+                <Property Name="DocumentQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measure" sap:quickinfo="Unit of Measure for the Commodity" sap:semantics="unit-of-measure"/>
+                <Property Name="DocumentLogHandle" Type="Edm.String" MaxLength="22" sap:label="Log Handle" sap:quickinfo="Application Log Handle"/>
+                <Property Name="DocumentVersion" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Version No." sap:quickinfo="Version"/>
+                <Property Name="DocumentStatus" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:text="DocumentStatusText" sap:label="Status"/>
+                <Property Name="DocumentStatusChangeReason" Type="Edm.String" MaxLength="255" sap:label="Status Change Reason" sap:quickinfo="Document Status Change Reason"/>
+                <Property Name="DocumentCreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="DocumentCreatedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
+                <Property Name="DocumentChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="DocumentChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+                <Property Name="DocumentStatusCriticality" Type="Edm.Byte"/>
+                <Property Name="DocumentChangeDocID" Type="Edm.String" MaxLength="32"/>
+                <Property Name="DocumentCompanyCodeText" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentCostCenterText" Type="Edm.String" MaxLength="20" sap:label="Cost Center Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentDirectionText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentStatusText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentPlantText" Type="Edm.String" MaxLength="30" sap:label="Plant Name" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_DocumentChangeDoc" Relationship="cds_zap_ui_document.assoc_9F850BC956B81AA8A4E300E59A5124E8" FromRole="FromRole_assoc_9F850BC956B81AA8A4E300E59A5124E8" ToRole="ToRole_assoc_9F850BC956B81AA8A4E300E59A5124E8"/>
+                <NavigationProperty Name="to_DocumentTP" Relationship="cds_zap_ui_document.assoc_A4E507CAD79CFAA0F5D5C171CA6B8A7C" FromRole="FromRole_assoc_A4E507CAD79CFAA0F5D5C171CA6B8A7C" ToRole="ToRole_assoc_A4E507CAD79CFAA0F5D5C171CA6B8A7C"/>
+            </EntityType>
+            <EntityType Name="PlantVHType" sap:label="Plant" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:label="Plant Name"/>
+            </EntityType>
+            <Association Name="assoc_9F850BC956B81AA8A4E300E59A5124E8" sap:content-version="1">
+                <End Type="cds_zap_ui_document.DocumentVersionType" Multiplicity="1" Role="FromRole_assoc_9F850BC956B81AA8A4E300E59A5124E8"/>
+                <End Type="cds_zap_ui_document.DocumentChangeDocType" Multiplicity="*" Role="ToRole_assoc_9F850BC956B81AA8A4E300E59A5124E8"/>
+            </Association>
+            <Association Name="assoc_A4E507CAD79CFAA0F5D5C171CA6B8A7C" sap:content-version="1">
+                <End Type="cds_zap_ui_document.DocumentVersionType" Multiplicity="1" Role="FromRole_assoc_A4E507CAD79CFAA0F5D5C171CA6B8A7C"/>
+                <End Type="cds_zap_ui_document.DocumentType" Multiplicity="1" Role="ToRole_assoc_A4E507CAD79CFAA0F5D5C171CA6B8A7C"/>
+            </Association>
+            <Association Name="assoc_630FDA1EB6D9E02F54F690C6055B7189" sap:content-version="1">
+                <End Type="cds_zap_ui_document.DocumentType" Multiplicity="1" Role="FromRole_assoc_630FDA1EB6D9E02F54F690C6055B7189">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zap_ui_document.DocumentVersionType" Multiplicity="*" Role="ToRole_assoc_630FDA1EB6D9E02F54F690C6055B7189"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_630FDA1EB6D9E02F54F690C6055B7189">
+                        <PropertyRef Name="DocumentUUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_630FDA1EB6D9E02F54F690C6055B7189">
+                        <PropertyRef Name="ParentDocumentUUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_3FF01B6777D3E6C2D97B5A71D4530B0B" sap:content-version="1">
+                <End Type="cds_zap_ui_document.DocumentType" Multiplicity="1" Role="FromRole_assoc_3FF01B6777D3E6C2D97B5A71D4530B0B"/>
+                <End Type="cds_zap_ui_document.DocumentChangeDocType" Multiplicity="*" Role="ToRole_assoc_3FF01B6777D3E6C2D97B5A71D4530B0B"/>
+            </Association>
+            <EntityContainer Name="cds_zap_ui_document_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="BusinessAreaVh" EntityType="cds_zap_ui_document.BusinessAreaVhType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="CostCenterVH" EntityType="cds_zap_ui_document.CostCenterVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="CompanyCodeVH" EntityType="cds_zap_ui_document.CompanyCodeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="DocumentChangeDoc" EntityType="cds_zap_ui_document.DocumentChangeDocType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="DirectionVH" EntityType="cds_zap_ui_document.DirectionVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZAP_C_DocumentStatusVH" EntityType="cds_zap_ui_document.ZAP_C_DocumentStatusVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Document" EntityType="cds_zap_ui_document.DocumentType" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="DocumentVersion" EntityType="cds_zap_ui_document.DocumentVersionType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="PlantVH" EntityType="cds_zap_ui_document.PlantVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_3FF01B6777D3E6C2D97B5A71D4530B0B" Association="cds_zap_ui_document.assoc_3FF01B6777D3E6C2D97B5A71D4530B0B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Document" Role="FromRole_assoc_3FF01B6777D3E6C2D97B5A71D4530B0B"/>
+                    <End EntitySet="DocumentChangeDoc" Role="ToRole_assoc_3FF01B6777D3E6C2D97B5A71D4530B0B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_630FDA1EB6D9E02F54F690C6055B7189" Association="cds_zap_ui_document.assoc_630FDA1EB6D9E02F54F690C6055B7189" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Document" Role="FromRole_assoc_630FDA1EB6D9E02F54F690C6055B7189"/>
+                    <End EntitySet="DocumentVersion" Role="ToRole_assoc_630FDA1EB6D9E02F54F690C6055B7189"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9F850BC956B81AA8A4E300E59A5124E8" Association="cds_zap_ui_document.assoc_9F850BC956B81AA8A4E300E59A5124E8" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DocumentVersion" Role="FromRole_assoc_9F850BC956B81AA8A4E300E59A5124E8"/>
+                    <End EntitySet="DocumentChangeDoc" Role="ToRole_assoc_9F850BC956B81AA8A4E300E59A5124E8"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A4E507CAD79CFAA0F5D5C171CA6B8A7C" Association="cds_zap_ui_document.assoc_A4E507CAD79CFAA0F5D5C171CA6B8A7C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DocumentVersion" Role="FromRole_assoc_A4E507CAD79CFAA0F5D5C171CA6B8A7C"/>
+                    <End EntitySet="Document" Role="ToRole_assoc_A4E507CAD79CFAA0F5D5C171CA6B8A7C"/>
+                </AssociationSet>
+                <FunctionImport Name="SetDocumentStatusToCancelled" ReturnType="cds_zap_ui_document.DocumentType" EntitySet="Document" m:HttpMethod="POST" sap:action-for="cds_zap_ui_document.DocumentType" sap:applicable-path="SetDocumentStatusToCancelled_ac">
+                    <Parameter Name="DocumentUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="DocumentStatusChangeReason" Type="Edm.String" Mode="In" MaxLength="255" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="SetDocumentStatusToCreated" ReturnType="cds_zap_ui_document.DocumentType" EntitySet="Document" m:HttpMethod="POST" sap:action-for="cds_zap_ui_document.DocumentType" sap:applicable-path="SetDocumentStatusToCreated_ac">
+                    <Parameter Name="DocumentUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="DocumentStatusChangeReason" Type="Edm.String" Mode="In" MaxLength="255" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="SetDocumentStatusToRejected" ReturnType="cds_zap_ui_document.DocumentType" EntitySet="Document" m:HttpMethod="POST" sap:action-for="cds_zap_ui_document.DocumentType" sap:applicable-path="SetDocumentStatusToRejected_ac">
+                    <Parameter Name="DocumentUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="DocumentStatusChangeReason" Type="Edm.String" Mode="In" MaxLength="255" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="SetDocumentStatusToReleased" ReturnType="cds_zap_ui_document.DocumentType" EntitySet="Document" m:HttpMethod="POST" sap:action-for="cds_zap_ui_document.DocumentType" sap:applicable-path="SetDocumentStatusToReleased_ac">
+                    <Parameter Name="DocumentUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="DocumentStatusChangeReason" Type="Edm.String" Mode="In" MaxLength="255" Nullable="true"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations Target="cds_zap_ui_document.DocumentType/DocumentCompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="CompanyCodeVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DocumentCompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ControllingArea"/>
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_document.DocumentType/DocumentDirection" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Direction"/>
+                        <PropertyValue Property="CollectionPath" String="DirectionVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DocumentDirection"/>
+                                    <PropertyValue Property="ValueListProperty" String="DocumentDirection"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocumentDirection_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocumentDirectionText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_document.DocumentType/DocumentBusinessArea" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Business Area"/>
+                        <PropertyValue Property="CollectionPath" String="BusinessAreaVh"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DocumentBusinessArea"/>
+                                    <PropertyValue Property="ValueListProperty" String="BusinessArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessArea_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessAreaName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_document.DocumentType/DocumentCostCenter" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Cost Center"/>
+                        <PropertyValue Property="CollectionPath" String="CostCenterVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DocumentCostCenter"/>
+                                    <PropertyValue Property="ValueListProperty" String="CostCenter"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ControllingArea"/>
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CostCenterName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_document.DocumentType/DocumentPlant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Plant"/>
+                        <PropertyValue Property="CollectionPath" String="PlantVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DocumentPlant"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_document.DocumentType/DocumentStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Status"/>
+                        <PropertyValue Property="CollectionPath" String="ZAP_C_DocumentStatusVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DocumentStatus"/>
+                                    <PropertyValue Property="ValueListProperty" String="DocumentStatus"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocumentStatus_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocumentStatusText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_document.cds_zap_ui_document_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_document.cds_zap_ui_document_Entities/Document" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>SetDocumentStatusToCancelled_ac</PropertyPath>
+                                <PropertyPath>SetDocumentStatusToCreated_ac</PropertyPath>
+                                <PropertyPath>SetDocumentStatusToRejected_ac</PropertyPath>
+                                <PropertyPath>SetDocumentStatusToReleased_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DocumentValidFromDate"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DocumentChangedDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>SetDocumentStatusToCancelled_ac</PropertyPath>
+                                <PropertyPath>SetDocumentStatusToCreated_ac</PropertyPath>
+                                <PropertyPath>SetDocumentStatusToRejected_ac</PropertyPath>
+                                <PropertyPath>SetDocumentStatusToReleased_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://us4.leverx.local:8000/sap/opu/odata/sap/ZAP_UI_DOCUMENT/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://us4.leverx.local:8000/sap/opu/odata/sap/ZAP_UI_DOCUMENT/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

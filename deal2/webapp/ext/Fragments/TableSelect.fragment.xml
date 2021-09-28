@@ -53,6 +53,20 @@
 				demandPopin="true">
 				<Text text="{i18n>colContractStartDate}"/>
 			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				id="idColumnPrincingStartDate"
+				hAlign="End"
+				demandPopin="true">
+				<Text text="{i18n>colPrincingStartDate}"/>
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				id="idColumnPricingEndDate"
+				hAlign="End"
+				demandPopin="true">
+				<Text text="{i18n>colPricingEndDate}"/>
+			</Column>
 		</columns>
 		
 	</TableSelectDialog>

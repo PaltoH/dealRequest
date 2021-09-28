@@ -1,7 +1,7 @@
 {
     "_version": "1.32.0",
     "sap.app": {
-        "id": "deal",
+        "id": "deal2",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -104,10 +104,12 @@
                 "type": "sap.ui.model.resource.ResourceModel",
                 "uri": "i18n/ObjectPage/DealRequest/i18n.properties"
             },
+            
             "i18n|sap.suite.ui.generic.template.ObjectPage|DealRequestItem": {
-                "type": "sap.ui.model.resource.ResourceModel",
-                "uri": "i18n/ObjectPage/DealRequestItem/i18n.properties"
+              "type": "sap.ui.model.resource.ResourceModel",
+              "uri": "i18n/ObjectPage/DealRequestItem/i18n.properties"
             },
+            
             "": {
                 "dataSource": "mainService",
                 "preload": true,
@@ -136,7 +138,7 @@
                                                 "Add": {
                                                     "id" : "idAddButton",
                                                     "text": "{@i18n>addBtn}",
-                                                    "press": "onShowSelectDialog"
+                                                    "press": "onAdd"
                                                 }
                                             }
                                         }
@@ -178,20 +180,25 @@
                             "dateSettings": {
                                 "useDateRange": true
                             }
-                        },
-                        "tableSettings": {
-                            "multiSelect": true,
-                            "smartVariantManagement": true,
-                            "condensedTableLayout": true,
-                            "selectAll": true
                         }
                     }
                 },
                 "pages": {
                     "ObjectPage|DealRequest": {
                         "entitySet": "DealRequest",
+                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
                         "component": {
                             "name": "sap.suite.ui.generic.template.ObjectPage"
+                        },
+                        "pages": {
+                          "ObjectPage|to_DealItem":{
+                            "navigationProperty": "to_DealItem",
+                            "entitySet": "DealRequestItem",
+                            "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                            "component": {
+                              "name": "sap.suite.ui.generic.template.ObjectPage"
+                            }
+                          }
                         }
                     }
                 }

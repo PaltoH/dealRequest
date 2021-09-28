@@ -18,7 +18,7 @@ sap.ui.define([
 			oAddButton.attachPress(this.onShowSelectDialog, this);
 			
 			var oTableCand = Core.byId("deal::sap.suite.ui.generic.template.ObjectPage.view.Details::DealRequest--idItems::Table");
-			oTableCand.setRequestAtLeastFields(["DealRequestRecordItemUUID", "DealItemSequenceNumber", "DealItemUUID"]);
+			oTableCand.setRequestAtLeastFields(["DealRequestRecordItemUUID", "DealItemInternalSequenceNumber", "DealItemUUID"]);
 			oTableCand.setUseExportToExcel(true);
 			
 			var oTableHistory = Core.byId("deal::sap.suite.ui.generic.template.ObjectPage.view.Details::DealRequest--idStatusFacet::Table");
@@ -60,10 +60,11 @@ sap.ui.define([
 			if (aRequest && aRequest[0] && aRequest[0].url) {
 				var sUrl = aRequest[0].url;
 				var sMethod = aRequest[0].method;
-				if (sUrl.includes("SetDealReqStatusToCreate") || 
-					sUrl.includes("SetDealReqStatusToRelease") || 
-					sUrl.includes("SetDealReqStatusToReject") || 
-					sUrl.includes("SetDealReqStatusToCancel")) {
+				if (sUrl.includes("SetDdsgntnReqStatusToCancel") || 
+					sUrl.includes("SetDdsgntnReqStatusToCreate") || 
+					sUrl.includes("SetDdsgntnReqStatusToRelease") || 
+					sUrl.includes("SetDdsgntnReqStatusToReject") || 
+					sUrl.includes("SetDdsgntnReqStatusToApprove")) {
 						this._refreshStatusesFacet();
 				}
 				if (sUrl.includes("/to_DealItem")) {
@@ -82,7 +83,7 @@ sap.ui.define([
 		_checkLength: function () {
 			var nCurrentTableLength = this._getTransactionsTable().getItems().length;
 			if (nCurrentTableLength < this.nInitialItemsLength) {
-				this._updateDealItemIntSequenceNumber();
+				this._updateDdsgntnItemIntSequenceNumber();
 			}
 			this.nInitialItemsLength = nCurrentTableLength;
 		},
@@ -91,16 +92,16 @@ sap.ui.define([
 	
 
 		/**
-		 * Put new value for property - ItemIntSequenceNumber into all table items.
+		 * Put new value for property - DdsgntnItemIntSequenceNumber into all table items.
 		 * @private
 		 */
-		_updateDealItemIntSequenceNumber: function () {
+		_updateDdsgntnItemIntSequenceNumber: function () {
 			var oTable = this._getTransactionsTable();
 			var aContexts = oTable.getItems();
 			var aObj = aContexts.map(function(item){
 				 	return item.getBindingContext().getObject();
 			});
-			var sUrl = "/DealRequestItem(DealItemUUID=guid'{DealItemUUID}',IsActiveEntity={IsActive})";
+			var sUrl = "/DealRequesttem(DealItemUUID=guid'{DealItemUUID}',IsActiveEntity={IsActive})";
 			
 			for (var i = 0; i < aObj.length; i++) {
 				if (aObj[i]) {
@@ -210,21 +211,21 @@ sap.ui.define([
 			var aContexts = oEvent.getParameter("selectedContexts");
 			if (aContexts && aContexts.length) {
 				for (var i = 0; i < aContexts.length; i++) {
-					var oDrCand = aContexts[i].getObject();
-					var sUrl = "/DealRequest(DealRequestUUID=guid'{UUIDNumber}',IsActiveEntity={bIsActive})/to_DealItem";
+					var oDdCand = aContexts[i].getObject();
+					var sUrl = "/DealnRequest(DealRequestUUID=guid'{UUIDNumber}',IsActiveEntity={bIsActive})/to_DealItem";
 					var sUUIDNumber = oCtx.getObject("DealRequestUUID");
 					var bIsActive = oCtx.getObject("IsActiveEntity");
-					var sDealItemIntSequenceNumber = this._getTransactionsTable().getItems().length + 1 + i + "";
+					var sDdsgntnItemIntSequenceNumber = this._getTransactionsTable().getItems().length + 1 + i + "";
 					
 					oODataModel.create(sUrl.replace("{UUIDNumber}", sUUIDNumber).replace("{bIsActive}", bIsActive), {
-							CandidateContractStartDate: oDrCand.CandidateContractStartDate,
-							CandidateDCSDeal: oDrCand.CandidateDCSDeal,
-							CandidateQuantity: oDrCand.CandidateQuantity,
-							CandidateQuantityUnit: oDrCand.CandidateQuantityUnit,
-							CandidateCounterparty: oDrCand.CandidateCounterparty,
-							DealRequestRecordItemUUID: oDrCand.CandidateUUID,
-							DealItemSequenceNumber: oDrCand.DealItemSequenceNumber,
-							DealItemInternalSequenceNumber: oDrCand.DealItemSequenceNumber
+							CandidateContractStartDate: oDdCand.CandidateContractStartDate,
+							CandidateDcsDeal: oDdCand.CandidateDcsDeal,
+							CandidateQuantity: oDdCand.CandidateQuantity,
+							CandidateQuantityUnit: oDdCand.CandidateQuantityUnit,
+							CandidateCounterparty: oDdCand.CandidateCounterparty,
+							DealRequestRecordItemUUID: oDdCand.CandidateUUID,
+							DealItemSequenceNumber: oDdCand.DealItemSequenceNumber,
+							DealItemInternalSequenceNumber: DealItemSequenceNumber
 					}, {
 							success: function(result){
 								this._refreshTransactionsFacet();

@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zap_ui_deal" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_DraftAdministrativeDataType" sap:label="Draft Administration Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="DraftEntityType"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Draft (Technical ID)"/>
+                <Property Name="DraftEntityType" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Draft Entity ID"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CreatedByUserDescription" sap:label="Draft Created By"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="LastChangedByUserDescription" sap:label="Draft Last Changed By"/>
+                <Property Name="DraftAccessType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Draft Access Type"/>
+                <Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft In Process Since"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="InProcessByUserDescription" sap:label="Draft In Process By"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Is Kept By User"/>
+                <Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Locked Since"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Created By Me"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Last Changed By Me"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft In Process By Me"/>
+                <Property Name="CreatedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Created By (Description)"/>
+                <Property Name="LastChangedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Last Changed By (Description)"/>
+                <Property Name="InProcessByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft In Process By (Description)"/>
+            </EntityType>
+            <EntityType Name="DealCandidatesType" sap:label="Dedesignation Candidate" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_DealRequestUUID"/>
+                    <PropertyRef Name="DealItemSequenceNumber"/>
+                </Key>
+                <Property Name="P_DealRequestUUID" Type="Edm.Guid" Nullable="false" sap:label="UUID"/>
+                <Property Name="DealItemSequenceNumber" Type="Edm.Int64" Nullable="false" sap:label="Sequence No."/>
+                <Property Name="CandidateUUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="CandidateDocumentIdentifier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document ID"/>
+                <Property Name="CandidateDCSDeal" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Financial Transaction" sap:quickinfo="Char 20"/>
+                <Property Name="CandidateQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="CandidateQuantityUnit" sap:label="Quantity"/>
+                <Property Name="CandidateQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measure" sap:quickinfo="Unit of Measure for the Commodity" sap:semantics="unit-of-measure"/>
+                <Property Name="CandidateCounterparty" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Counterparty" sap:quickinfo="Char 20"/>
+                <Property Name="CandidateContractStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Contract Start Date" sap:quickinfo="Field of type DATS"/>
+                <NavigationProperty Name="Parameters" Relationship="cds_zap_ui_deal.assoc_1C687E6B23B521B846A72FAD3016A6AF" FromRole="ToRole_assoc_1C687E6B23B521B846A72FAD3016A6AF" ToRole="FromRole_assoc_1C687E6B23B521B846A72FAD3016A6AF" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DealCandidatesParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_DealRequestUUID"/>
+                </Key>
+                <Property Name="P_DealRequestUUID" Type="Edm.Guid" Nullable="false" sap:parameter="mandatory" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="cds_zap_ui_deal.assoc_1C687E6B23B521B846A72FAD3016A6AF" FromRole="FromRole_assoc_1C687E6B23B521B846A72FAD3016A6AF" ToRole="ToRole_assoc_1C687E6B23B521B846A72FAD3016A6AF"/>
+            </EntityType>
+            <EntityType Name="DealChangeDocType" sap:label="Deal Change Doc" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ChangeDocObject"/>
+                    <PropertyRef Name="ChangeDocObjectClass"/>
+                    <PropertyRef Name="ChangeDocument"/>
+                    <PropertyRef Name="DatabaseTable"/>
+                    <PropertyRef Name="ChangeDocTableKey"/>
+                    <PropertyRef Name="ChangeDocDatabaseTableField"/>
+                    <PropertyRef Name="ChangeDocItemChangeType"/>
+                </Key>
+                <Property Name="ChangeDocObject" Type="Edm.String" Nullable="false" MaxLength="90" sap:display-format="UpperCase" sap:label="Object Value"/>
+                <Property Name="ChangeDocObjectClass" Type="Edm.String" Nullable="false" MaxLength="15" sap:display-format="UpperCase" sap:label="Change Doc. Object" sap:quickinfo="Object class"/>
+                <Property Name="ChangeDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number" sap:quickinfo="Change Number of Document"/>
+                <Property Name="DatabaseTable" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Table Name"/>
+                <Property Name="ChangeDocTableKey" Type="Edm.String" Nullable="false" MaxLength="70" sap:display-format="UpperCase" sap:label="Table Key" sap:quickinfo="Changed table record key"/>
+                <Property Name="ChangeDocDatabaseTableField" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Field Name"/>
+                <Property Name="ChangeDocItemChangeType" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Change Indicator" sap:quickinfo="Type of Change"/>
+                <Property Name="ChangeDocNewFieldValue" Type="Edm.String" MaxLength="254" sap:display-format="UpperCase" sap:text="DealRequestStatusText" sap:label="Status"/>
+                <Property Name="DealStatusCriticality" Type="Edm.Byte"/>
+                <Property Name="DealRequestStatusText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+                <Property Name="ChgDocumentNewFieldValueReason" Type="Edm.String" MaxLength="254" sap:display-format="UpperCase" sap:label="Reason"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="UserDescription" sap:label="Changed By"/>
+                <Property Name="UserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="User Description"/>
+                <Property Name="DealChgDocDteTime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Changed At"/>
+            </EntityType>
+            <EntityType Name="ReclassificationHandlingVHType" sap:label="Deal Request Status" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DealReclassificationHanding"/>
+                    <PropertyRef Name="DomainValuePosition"/>
+                </Key>
+                <Property Name="DealReclassificationHanding" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative" sap:text="DealReclassificationHanding_Text" sap:label="Reclas Handling" sap:quickinfo="Reclassification Handling"/>
+                <Property Name="DealReclassificationHanding_Text" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DomainValuePosition" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Value key" sap:quickinfo="Domain value key"/>
+                <Property Name="DealRclassfctnHandingText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="DealRequestItemType" sap:label="Deal Request Item Consumption" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DealItemUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="DealItemUUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="DealRequestUUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DealItemSequenceNumber" Type="Edm.Int64" sap:label="Sequence No." sap:quickinfo="Sequence number"/>
+                <Property Name="DealItemInternalSequenceNumber" Type="Edm.Int64" sap:label="Sequence number"/>
+                <Property Name="DealItmRclassfctnHandling" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:text="DealRclassfctnHandingText" sap:label="OCI Handling" sap:quickinfo="Reclassification Handling" sap:value-list="fixed-values"/>
+                <Property Name="DealItmPrpsdRclassfctnHandling" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Reclas Handling" sap:quickinfo="Reclassification Handling"/>
+                <Property Name="DealItemIsCntrdealCreated" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Create Counterdeal Request" sap:quickinfo="Is Counter Deal Created"/>
+                <Property Name="DealRequestRecordItemUUID" Type="Edm.Guid" sap:label="Record UUID." sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:value-list="standard"/>
+                <Property Name="DealItemLastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
+                <Property Name="CandidateContractStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Contract Start Date" sap:quickinfo="Field of type DATS"/>
+                <Property Name="CandidateCounterparty" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Counterparty" sap:quickinfo="Char 20"/>
+                <Property Name="CandidateDcsDeal" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Financial Transaction" sap:quickinfo="Char 20"/>
+                <Property Name="CandidateQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Quantity"/>
+                <Property Name="CandidateQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measure" sap:quickinfo="Unit of Measure for the Commodity" sap:semantics="unit-of-measure"/>
+                <Property Name="DealRclassfctnHandingText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zap_ui_deal.assoc_306F3D505FB02756E60C3D4D871467A5" FromRole="FromRole_assoc_306F3D505FB02756E60C3D4D871467A5" ToRole="ToRole_assoc_306F3D505FB02756E60C3D4D871467A5"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_zap_ui_deal.assoc_BC345687A2B294BA7C90BCFA206D052C" FromRole="FromRole_assoc_BC345687A2B294BA7C90BCFA206D052C" ToRole="ToRole_assoc_BC345687A2B294BA7C90BCFA206D052C"/>
+                <NavigationProperty Name="to_DealRequestTP" Relationship="cds_zap_ui_deal.assoc_46DF1AEEE117188AD6F8653071508CB5" FromRole="FromRole_assoc_46DF1AEEE117188AD6F8653071508CB5" ToRole="ToRole_assoc_46DF1AEEE117188AD6F8653071508CB5"/>
+            </EntityType>
+            <EntityType Name="DealRequestStatusVHType" sap:label="Deal Request Status" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DealRequestStatus"/>
+                    <PropertyRef Name="DomainValuePosition"/>
+                </Key>
+                <Property Name="DealRequestStatus" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative" sap:text="DealRequestStatus_Text" sap:label="Status"/>
+                <Property Name="DealRequestStatus_Text" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DomainValuePosition" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Value key" sap:quickinfo="Domain value key"/>
+                <Property Name="DealRequestStatusText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="DealRequestType" sap:label="Deal Request Consumption" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DealRequestUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="SetDealReqStatusToCancel_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetDealReqStatusToCreate_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetDealReqStatusToReject_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetDealReqStatusToRelease_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocumentUUID_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealRequestUUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DealRequestIdentifier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Deal Request ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentUUID" Type="Edm.Guid" sap:field-control="DocumentUUID_fc" sap:text="DocumentIdentifier" sap:label="Document ID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:value-list="standard"/>
+                <Property Name="DealRequestDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Deal Date"/>
+                <Property Name="DealRequestRemark" Type="Edm.String" MaxLength="40" sap:label="Remark"/>
+                <Property Name="ReferenceDealUUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="DealRequestStatus" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:text="DealRequestStatusText" sap:label="Status" sap:value-list="fixed-values"/>
+                <Property Name="DealRequestStatusCriticality" Type="Edm.Byte"/>
+                <Property Name="DealRequestStatusChangeReason" Type="Edm.String" MaxLength="255" sap:label="Status Change Reason" sap:quickinfo="Document Status Change Reason"/>
+                <Property Name="DealRequestCreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="DealCreatedByUserDescription" sap:label="Created By" sap:quickinfo="User Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DealRequestCreatedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Created At" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DealRequestChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="DealChangedByUserDescription" sap:label="Changed By" sap:quickinfo="User Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DealRequestChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Changed At" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DealRequestChangeDocumentID" Type="Edm.String" MaxLength="32"/>
+                <Property Name="DocumentCompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="DocumentCompanyCodeText" sap:label="Company" sap:quickinfo="Company Code" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="DocumentIdentifier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="DocumentQuantityUnit" sap:label="Document Quantity" sap:quickinfo="Quantity" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:creatable="false" sap:updatable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="DocumentDirection" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Direction" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentPricingPeriodStart" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Pricing Start Date" sap:quickinfo="Pricing Period Start" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentPricingPeriodEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Pricing End Date" sap:quickinfo="Pricing Period End" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DealRequestStatusText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DealChangedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="User Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DealCreatedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="User Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentCompanyCodeText" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DealReqBeforeOverHedgeText" Type="Edm.String" MaxLength="132" sap:label="Over-Hedge" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealReqBfrOvrHdgCriticality" Type="Edm.Byte" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealReqBfrUtilizationText" Type="Edm.String" MaxLength="132" sap:label="Utilization" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealRequestTargetQuotaText" Type="Edm.String" MaxLength="132" sap:label="Target Quota" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealReqAfterOverHedgeText" Type="Edm.String" MaxLength="132" sap:label="Over-Hedge" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealReqAftOvrHdgCriticality" Type="Edm.Byte" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealReqAfterUtilizationText" Type="Edm.String" MaxLength="132" sap:label="Utilization" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealReqAftUtilznCriticality" Type="Edm.Byte" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealRequestQuantityText" Type="Edm.String" MaxLength="132" sap:label="Dedesignation Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealItmHasRclassfctnApplied" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Proposed OCI Handling Applied" sap:quickinfo="Truth Value: True/False" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealItmRclassfctnCritlty" Type="Edm.Byte" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zap_ui_deal.assoc_1141CF9D169508211DD4965A024A7343" FromRole="FromRole_assoc_1141CF9D169508211DD4965A024A7343" ToRole="ToRole_assoc_1141CF9D169508211DD4965A024A7343"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_zap_ui_deal.assoc_D9C07DDFB552E09A1A6A84B07043FD61" FromRole="FromRole_assoc_D9C07DDFB552E09A1A6A84B07043FD61" ToRole="ToRole_assoc_D9C07DDFB552E09A1A6A84B07043FD61"/>
+                <NavigationProperty Name="to_DealChangeDoc" Relationship="cds_zap_ui_deal.assoc_2CABFF830969E52F502C72F60F035997" FromRole="FromRole_assoc_2CABFF830969E52F502C72F60F035997" ToRole="ToRole_assoc_2CABFF830969E52F502C72F60F035997"/>
+                <NavigationProperty Name="to_DealItem" Relationship="cds_zap_ui_deal.assoc_A1B9A17B63D7B18E29EA54344AC16062" FromRole="FromRole_assoc_A1B9A17B63D7B18E29EA54344AC16062" ToRole="ToRole_assoc_A1B9A17B63D7B18E29EA54344AC16062"/>
+            </EntityType>
+            <EntityType Name="CompanyCodeVHType" sap:label="Document Complany Code" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+            </EntityType>
+            <EntityType Name="ZAP_C_DocumentUUIDVHType" sap:label="Document" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DocumentUUID"/>
+                </Key>
+                <Property Name="DocumentUUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="DocumentIdentifier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document ID"/>
+                <Property Name="DocumenttDifferenceDays" Type="Edm.Int32"/>
+                <Property Name="DocumentVersion" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative"/>
+                <Property Name="DocumentCompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company" sap:quickinfo="Company Code"/>
+                <Property Name="DocumentValidFromDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid-From Date"/>
+                <Property Name="DocumentQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="DocumentQuantityUnit" sap:label="Quantity"/>
+                <Property Name="DocumentQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Quantity Unit" sap:quickinfo="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+            </EntityType>
+            <ComplexType Name="DummyFunctionImportResult">
+                <Property Name="IsInvalid" Type="Edm.Boolean" sap:label="TRUE"/>
+            </ComplexType>
+            <Association Name="assoc_1C687E6B23B521B846A72FAD3016A6AF" sap:content-version="1">
+                <End Type="cds_zap_ui_deal.DealCandidatesParameters" Multiplicity="1" Role="FromRole_assoc_1C687E6B23B521B846A72FAD3016A6AF"/>
+                <End Type="cds_zap_ui_deal.DealCandidatesType" Multiplicity="*" Role="ToRole_assoc_1C687E6B23B521B846A72FAD3016A6AF"/>
+            </Association>
+            <Association Name="assoc_1141CF9D169508211DD4965A024A7343" sap:content-version="1">
+                <End Type="cds_zap_ui_deal.DealRequestType" Multiplicity="1" Role="FromRole_assoc_1141CF9D169508211DD4965A024A7343"/>
+                <End Type="cds_zap_ui_deal.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_1141CF9D169508211DD4965A024A7343"/>
+            </Association>
+            <Association Name="assoc_D9C07DDFB552E09A1A6A84B07043FD61" sap:content-version="1">
+                <End Type="cds_zap_ui_deal.DealRequestType" Multiplicity="1" Role="FromRole_assoc_D9C07DDFB552E09A1A6A84B07043FD61"/>
+                <End Type="cds_zap_ui_deal.DealRequestType" Multiplicity="0..1" Role="ToRole_assoc_D9C07DDFB552E09A1A6A84B07043FD61"/>
+            </Association>
+            <Association Name="assoc_2CABFF830969E52F502C72F60F035997" sap:content-version="1">
+                <End Type="cds_zap_ui_deal.DealRequestType" Multiplicity="1" Role="FromRole_assoc_2CABFF830969E52F502C72F60F035997"/>
+                <End Type="cds_zap_ui_deal.DealChangeDocType" Multiplicity="*" Role="ToRole_assoc_2CABFF830969E52F502C72F60F035997"/>
+            </Association>
+            <Association Name="assoc_A1B9A17B63D7B18E29EA54344AC16062" sap:content-version="1">
+                <End Type="cds_zap_ui_deal.DealRequestType" Multiplicity="1" Role="FromRole_assoc_A1B9A17B63D7B18E29EA54344AC16062">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zap_ui_deal.DealRequestItemType" Multiplicity="*" Role="ToRole_assoc_A1B9A17B63D7B18E29EA54344AC16062"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_A1B9A17B63D7B18E29EA54344AC16062">
+                        <PropertyRef Name="DealRequestUUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_A1B9A17B63D7B18E29EA54344AC16062">
+                        <PropertyRef Name="DealRequestUUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_306F3D505FB02756E60C3D4D871467A5" sap:content-version="1">
+                <End Type="cds_zap_ui_deal.DealRequestItemType" Multiplicity="1" Role="FromRole_assoc_306F3D505FB02756E60C3D4D871467A5"/>
+                <End Type="cds_zap_ui_deal.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_306F3D505FB02756E60C3D4D871467A5"/>
+            </Association>
+            <Association Name="assoc_BC345687A2B294BA7C90BCFA206D052C" sap:content-version="1">
+                <End Type="cds_zap_ui_deal.DealRequestItemType" Multiplicity="1" Role="FromRole_assoc_BC345687A2B294BA7C90BCFA206D052C"/>
+                <End Type="cds_zap_ui_deal.DealRequestItemType" Multiplicity="0..1" Role="ToRole_assoc_BC345687A2B294BA7C90BCFA206D052C"/>
+            </Association>
+            <Association Name="assoc_46DF1AEEE117188AD6F8653071508CB5" sap:content-version="1">
+                <End Type="cds_zap_ui_deal.DealRequestItemType" Multiplicity="1" Role="FromRole_assoc_46DF1AEEE117188AD6F8653071508CB5"/>
+                <End Type="cds_zap_ui_deal.DealRequestType" Multiplicity="1" Role="ToRole_assoc_46DF1AEEE117188AD6F8653071508CB5"/>
+            </Association>
+            <EntityContainer Name="cds_zap_ui_deal_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_DraftAdministrativeData" EntityType="cds_zap_ui_deal.I_DraftAdministrativeDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="DealCandidatesSet" EntityType="cds_zap_ui_deal.DealCandidatesType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="DealCandidates" EntityType="cds_zap_ui_deal.DealCandidatesParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DealChangeDoc" EntityType="cds_zap_ui_deal.DealChangeDocType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ReclassificationHandlingVH" EntityType="cds_zap_ui_deal.ReclassificationHandlingVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="DealRequestItem" EntityType="cds_zap_ui_deal.DealRequestItemType" sap:content-version="1"/>
+                <EntitySet Name="DealRequestStatusVH" EntityType="cds_zap_ui_deal.DealRequestStatusVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="DealRequest" EntityType="cds_zap_ui_deal.DealRequestType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="CompanyCodeVH" EntityType="cds_zap_ui_deal.CompanyCodeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZAP_C_DocumentUUIDVH" EntityType="cds_zap_ui_deal.ZAP_C_DocumentUUIDVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_2CABFF830969E52F502C72F60F035997" Association="cds_zap_ui_deal.assoc_2CABFF830969E52F502C72F60F035997" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DealRequest" Role="FromRole_assoc_2CABFF830969E52F502C72F60F035997"/>
+                    <End EntitySet="DealChangeDoc" Role="ToRole_assoc_2CABFF830969E52F502C72F60F035997"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_BC345687A2B294BA7C90BCFA206D052C" Association="cds_zap_ui_deal.assoc_BC345687A2B294BA7C90BCFA206D052C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DealRequestItem" Role="FromRole_assoc_BC345687A2B294BA7C90BCFA206D052C"/>
+                    <End EntitySet="DealRequestItem" Role="ToRole_assoc_BC345687A2B294BA7C90BCFA206D052C"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_306F3D505FB02756E60C3D4D871467A5" Association="cds_zap_ui_deal.assoc_306F3D505FB02756E60C3D4D871467A5" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DealRequestItem" Role="FromRole_assoc_306F3D505FB02756E60C3D4D871467A5"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_306F3D505FB02756E60C3D4D871467A5"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_1C687E6B23B521B846A72FAD3016A6AF" Association="cds_zap_ui_deal.assoc_1C687E6B23B521B846A72FAD3016A6AF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DealCandidates" Role="FromRole_assoc_1C687E6B23B521B846A72FAD3016A6AF"/>
+                    <End EntitySet="DealCandidatesSet" Role="ToRole_assoc_1C687E6B23B521B846A72FAD3016A6AF"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A1B9A17B63D7B18E29EA54344AC16062" Association="cds_zap_ui_deal.assoc_A1B9A17B63D7B18E29EA54344AC16062" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DealRequest" Role="FromRole_assoc_A1B9A17B63D7B18E29EA54344AC16062"/>
+                    <End EntitySet="DealRequestItem" Role="ToRole_assoc_A1B9A17B63D7B18E29EA54344AC16062"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_1141CF9D169508211DD4965A024A7343" Association="cds_zap_ui_deal.assoc_1141CF9D169508211DD4965A024A7343" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DealRequest" Role="FromRole_assoc_1141CF9D169508211DD4965A024A7343"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_1141CF9D169508211DD4965A024A7343"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_46DF1AEEE117188AD6F8653071508CB5" Association="cds_zap_ui_deal.assoc_46DF1AEEE117188AD6F8653071508CB5" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DealRequestItem" Role="FromRole_assoc_46DF1AEEE117188AD6F8653071508CB5"/>
+                    <End EntitySet="DealRequest" Role="ToRole_assoc_46DF1AEEE117188AD6F8653071508CB5"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_D9C07DDFB552E09A1A6A84B07043FD61" Association="cds_zap_ui_deal.assoc_D9C07DDFB552E09A1A6A84B07043FD61" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DealRequest" Role="FromRole_assoc_D9C07DDFB552E09A1A6A84B07043FD61"/>
+                    <End EntitySet="DealRequest" Role="ToRole_assoc_D9C07DDFB552E09A1A6A84B07043FD61"/>
+                </AssociationSet>
+                <FunctionImport Name="DealRequestActivate" ReturnType="cds_zap_ui_deal.DealRequestType" EntitySet="DealRequest" m:HttpMethod="POST" sap:action-for="cds_zap_ui_deal.DealRequestType">
+                    <Parameter Name="DealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="DealRequestDiscard" ReturnType="cds_zap_ui_deal.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zap_ui_deal.DealRequestType">
+                    <Parameter Name="DealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="DealRequestEdit" ReturnType="cds_zap_ui_deal.DealRequestType" EntitySet="DealRequest" m:HttpMethod="POST" sap:action-for="cds_zap_ui_deal.DealRequestType">
+                    <Parameter Name="DealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="DealRequestPrepare" ReturnType="cds_zap_ui_deal.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zap_ui_deal.DealRequestType">
+                    <Parameter Name="DealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="DealRequestResume" ReturnType="cds_zap_ui_deal.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zap_ui_deal.DealRequestType">
+                    <Parameter Name="DealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="SetDealReqStatusToCancel" ReturnType="cds_zap_ui_deal.DealRequestType" EntitySet="DealRequest" m:HttpMethod="POST" sap:action-for="cds_zap_ui_deal.DealRequestType" sap:applicable-path="SetDealReqStatusToCancel_ac">
+                    <Parameter Name="DealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="DealRequestStatusChangeReason" Type="Edm.String" Mode="In" MaxLength="255" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="SetDealReqStatusToCreate" ReturnType="cds_zap_ui_deal.DealRequestType" EntitySet="DealRequest" m:HttpMethod="POST" sap:action-for="cds_zap_ui_deal.DealRequestType" sap:applicable-path="SetDealReqStatusToCreate_ac">
+                    <Parameter Name="DealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="DealRequestStatusChangeReason" Type="Edm.String" Mode="In" MaxLength="255" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="SetDealReqStatusToReject" ReturnType="cds_zap_ui_deal.DealRequestType" EntitySet="DealRequest" m:HttpMethod="POST" sap:action-for="cds_zap_ui_deal.DealRequestType" sap:applicable-path="SetDealReqStatusToReject_ac">
+                    <Parameter Name="DealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="DealRequestStatusChangeReason" Type="Edm.String" Mode="In" MaxLength="255" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="SetDealReqStatusToRelease" ReturnType="cds_zap_ui_deal.DealRequestType" EntitySet="DealRequest" m:HttpMethod="POST" sap:action-for="cds_zap_ui_deal.DealRequestType" sap:applicable-path="SetDealReqStatusToRelease_ac">
+                    <Parameter Name="DealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="DealRequestStatusChangeReason" Type="Edm.String" Mode="In" MaxLength="255" Nullable="true"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations Target="cds_zap_ui_deal.cds_zap_ui_deal_Entities/DealRequest" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="cds_zap_ui_deal.cds_zap_ui_deal_Entities/DealRequestActivate"/>
+                        <PropertyValue Property="DiscardAction" String="cds_zap_ui_deal.cds_zap_ui_deal_Entities/DealRequestDiscard"/>
+                        <PropertyValue Property="EditAction" String="cds_zap_ui_deal.cds_zap_ui_deal_Entities/DealRequestEdit"/>
+                        <PropertyValue Property="PreparationAction" String="cds_zap_ui_deal.cds_zap_ui_deal_Entities/DealRequestPrepare"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>SetDealReqStatusToCancel_ac</PropertyPath>
+                                <PropertyPath>SetDealReqStatusToCreate_ac</PropertyPath>
+                                <PropertyPath>SetDealReqStatusToReject_ac</PropertyPath>
+                                <PropertyPath>SetDealReqStatusToRelease_ac</PropertyPath>
+                                <PropertyPath>DocumentUUID_fc</PropertyPath>
+                                <PropertyPath>DealReqBeforeOverHedgeText</PropertyPath>
+                                <PropertyPath>DealReqBfrOvrHdgCriticality</PropertyPath>
+                                <PropertyPath>DealReqBfrUtilizationText</PropertyPath>
+                                <PropertyPath>DealRequestTargetQuotaText</PropertyPath>
+                                <PropertyPath>DealReqAfterOverHedgeText</PropertyPath>
+                                <PropertyPath>DealReqAftOvrHdgCriticality</PropertyPath>
+                                <PropertyPath>DealReqAfterUtilizationText</PropertyPath>
+                                <PropertyPath>DealReqAftUtilznCriticality</PropertyPath>
+                                <PropertyPath>DealRequestQuantityText</PropertyPath>
+                                <PropertyPath>DealItmHasRclassfctnApplied</PropertyPath>
+                                <PropertyPath>DealItmRclassfctnCritlty</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DealRequestCreatedDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DealRequestChangedDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DocumentPricingPeriodStart"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DocumentPricingPeriodEnd"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_DealItem"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>SetDealReqStatusToCancel_ac</PropertyPath>
+                                <PropertyPath>SetDealReqStatusToCreate_ac</PropertyPath>
+                                <PropertyPath>SetDealReqStatusToReject_ac</PropertyPath>
+                                <PropertyPath>SetDealReqStatusToRelease_ac</PropertyPath>
+                                <PropertyPath>DocumentUUID_fc</PropertyPath>
+                                <PropertyPath>DealReqBeforeOverHedgeText</PropertyPath>
+                                <PropertyPath>DealReqBfrOvrHdgCriticality</PropertyPath>
+                                <PropertyPath>DealReqBfrUtilizationText</PropertyPath>
+                                <PropertyPath>DealRequestTargetQuotaText</PropertyPath>
+                                <PropertyPath>DealReqAfterOverHedgeText</PropertyPath>
+                                <PropertyPath>DealReqAftOvrHdgCriticality</PropertyPath>
+                                <PropertyPath>DealReqAfterUtilizationText</PropertyPath>
+                                <PropertyPath>DealReqAftUtilznCriticality</PropertyPath>
+                                <PropertyPath>DealRequestQuantityText</PropertyPath>
+                                <PropertyPath>DealItmHasRclassfctnApplied</PropertyPath>
+                                <PropertyPath>DealItmRclassfctnCritlty</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.cds_zap_ui_deal_Entities/DealRequestItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>cds_zap_ui_deal.cds_zap_ui_deal_Entities/DealRequest</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DealItmRclassfctnHandling" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Reclas Handling"/>
+                        <PropertyValue Property="CollectionPath" String="ReclassificationHandlingVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DealItmRclassfctnHandling"/>
+                                    <PropertyValue Property="ValueListProperty" String="DealReclassificationHanding"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DealReclassificationHanding_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DealRclassfctnHandingText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DealRequestRecordItemUUID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="UUID"/>
+                        <PropertyValue Property="CollectionPath" String="DealCandidatesSet"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DealRequestRecordItemUUID"/>
+                                    <PropertyValue Property="ValueListProperty" String="CandidateUUID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DealItemSequenceNumber"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CandidateDCSDeal"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CandidateQuantity"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CandidateQuantityUnit"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CandidateCounterparty"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CandidateContractStartDate"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DocumentUUID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="UUID"/>
+                        <PropertyValue Property="CollectionPath" String="ZAP_C_DocumentUUIDVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DocumentUUID"/>
+                                    <PropertyValue Property="ValueListProperty" String="DocumentUUID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocumentIdentifier"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocumentCompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocumentValidFromDate"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocumentQuantity"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DocumentQuantityUnit"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealRequestStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Status"/>
+                        <PropertyValue Property="CollectionPath" String="DealRequestStatusVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DealRequestStatus"/>
+                                    <PropertyValue Property="ValueListProperty" String="DealRequestStatus"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DealRequestStatus_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DealRequestStatusText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DocumentCompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="CompanyCodeVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DocumentCompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.cds_zap_ui_deal_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DealItemInternalSequenceNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DealItemSequenceNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealRequestDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.cds_zap_ui_deal_Entities/DealCandidates" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_DealRequestUUID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_DealRequestUUID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.ZAP_C_DocumentUUIDVHType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>DocumentIdentifier</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://us4.leverx.local:8000/sap/opu/odata/sap/ZAP_UI_DEAL/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://us4.leverx.local:8000/sap/opu/odata/sap/ZAP_UI_DEAL/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

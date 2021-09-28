@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/zap_ui_deal/$metadata">
+        <edmx:Include Namespace="ZAP_UI_DEAL" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="zap_ui_deal_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zap_ui_deal.I_DraftAdministrativeDataType/DraftUUID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.I_DraftAdministrativeDataType/DraftEntityType">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.I_DraftAdministrativeDataType/DraftAccessType">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.I_DraftAdministrativeDataType/ProcessingStartDateTime">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.I_DraftAdministrativeDataType/DraftIsKeptByUser">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.I_DraftAdministrativeDataType/EnqueueStartDateTime">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.I_DraftAdministrativeDataType/DraftIsCreatedByMe">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.I_DraftAdministrativeDataType/DraftIsLastChangedByMe">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.I_DraftAdministrativeDataType/DraftIsProcessedByMe">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.I_DraftAdministrativeDataType/CreatedByUserDescription">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.I_DraftAdministrativeDataType/LastChangedByUserDescription">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.I_DraftAdministrativeDataType/InProcessByUserDescription">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealCandidatesType/CandidateUUID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealCandidatesType/CandidateDocumentIdentifier">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealCandidatesType/P_DealRequestUUID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealCandidatesType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DealItemSequenceNumber"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CandidateDCSDeal"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CandidateQuantity"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CandidateCounterparty"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CandidateContractStartDate"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType/DealStatusCriticality">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType/ChangeDocObject">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType/ChangeDocObjectClass">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType/ChangeDocument">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType/DatabaseTable">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType/ChangeDocTableKey">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType/ChangeDocDatabaseTableField">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType/ChangeDocItemChangeType">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType/DealRequestStatusText">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType/UserDescription">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType/ChangeDocNewFieldValue">
+                <Annotation Term="Common.Text" Path="DealRequestStatusText">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType/CreatedByUser">
+                <Annotation Term="Common.Text" Path="UserDescription">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealChangeDocType">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Item"/>
+                        <PropertyValue Property="TypeNamePlural" String="Items"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Criticality" Path="DealStatusCriticality"/>
+                            <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/>
+                            <PropertyValue Property="Value" Path="ChangeDocNewFieldValue"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ChgDocumentNewFieldValueReason"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DealChgDocDteTime"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CreatedByUser"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="DealChgDocDteTime"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.ReclassificationHandlingVHType/DomainValuePosition">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DealItemUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DealRequestUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DealItemInternalSequenceNumber">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DealItmPrpsdRclassfctnHandling">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DealItemLastChangedAt">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DealRclassfctnHandingText">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/CandidateQuantityUnit">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType/DealItmRclassfctnHandling">
+                <Annotation Term="Common.Text" Path="DealRclassfctnHandingText">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestItemType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DealRequestRecordItemUUID"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DealItemSequenceNumber"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Add"/>
+                            <PropertyValue Property="Action" String="">
+                                <Annotation Term="Core.Messages">
+                                    <Collection>
+                                        <Record>
+                                            <PropertyValue Property="message" String="ERROR: Mandatory Value for Action not found"/>
+                                            <PropertyValue Property="severity" String="error"/>
+                                        </Record>
+                                    </Collection>
+                                </Annotation>
+                            </PropertyValue>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CandidateContractStartDate"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CandidateDcsDeal"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CandidateQuantity"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CandidateCounterparty"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DealItmRclassfctnHandling"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DealItemIsCntrdealCreated"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="RequestAtLeast">
+                            <Collection>
+                                <PropertyPath>DealItemInternalSequenceNumber</PropertyPath>
+                                <PropertyPath>DealItemSequenceNumber</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="DealItemInternalSequenceNumber"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestStatusVHType/DomainValuePosition">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealRequestUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DocumentUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="Common.Text" Path="DocumentIdentifier">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealRequestStatusCriticality">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealRequestStatusChangeReason">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealRequestChangeDocumentID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealRequestStatusText">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealChangedByUserDescription">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealCreatedByUserDescription">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DocumentCompanyCodeText">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealItmRclassfctnCritlty">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DocumentDirection">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealReqBfrOvrHdgCriticality">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealReqAftOvrHdgCriticality">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealReqAftUtilznCriticality">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/SetDealReqStatusToCancel_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/SetDealReqStatusToCreate_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/SetDealReqStatusToReject_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/SetDealReqStatusToRelease_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DocumentUUID_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealRequestRemark">
+                <Annotation Term="UI.MultiLineText"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealRequestStatus">
+                <Annotation Term="Common.Text" Path="DealRequestStatusText">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealRequestCreatedByUser">
+                <Annotation Term="Common.Text" Path="DealCreatedByUserDescription">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealRequestChangedByUser">
+                <Annotation Term="Common.Text" Path="DealChangedByUserDescription">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DocumentCompanyCode">
+                <Annotation Term="Common.Text" Path="DocumentCompanyCodeText">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DocumentQuantityUnit"/>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType/DealItmHasRclassfctnApplied"/>
+            <Annotations Target="cds_zap_ui_deal.DealRequestType">
+                <Annotation Term="UI.DataPoint" Qualifier="dpStatus">
+                    <Record>
+                        <PropertyValue Property="Value" Path="DealRequestStatus"/>
+                        <PropertyValue Property="Title" String="Status"/>
+                        <PropertyValue Property="TargetValue" Path="DealRequestStatus"/>
+                        <PropertyValue Property="Criticality" Path="DealRequestStatusCriticality"/>
+                        <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="General"/>
+                            <PropertyValue Property="ID" String="idGeneralInformation"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General"/>
+                                        <PropertyValue Property="ID" String="idGeneral"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgGeneral"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Document Details"/>
+                                        <PropertyValue Property="ID" String="idDocument"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgDocument"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Schedule"/>
+                                        <PropertyValue Property="ID" String="idDates"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgDates"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Over-Hedge Situation"/>
+                            <PropertyValue Property="ID" String="idOverHedgeStatus"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="As Is"/>
+                                        <PropertyValue Property="ID" String="idAsIs"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgAsIs"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="After Selection For Dedesignation"/>
+                                        <PropertyValue Property="ID" String="idToBe"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgToBe"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Deal Transactions"/>
+                            <PropertyValue Property="ID" String="idItems"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_DealItem/@UI.LineItem"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                            <Annotation Term="UI.IsSummary" Bool="true"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Status History"/>
+                            <PropertyValue Property="ID" String="idStatusFacet"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_DealChangeDoc/@UI.LineItem"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Administrative Data"/>
+                            <PropertyValue Property="ID" String="idAdministrativeFacet"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fgAdministrative"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="idStatus"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#dpStatus"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgAdministrative">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DealRequestCreatedByUser"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DealRequestCreatedDateTime"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DealRequestChangedByUser"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DealRequestChangedDateTime"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Label" String="Administrative Data"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgAsIs">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Criticality" String="">
+                                        <Annotation Term="Core.Messages">
+                                            <Collection>
+                                                <Record>
+                                                    <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-001"/>
+                                                    <PropertyValue Property="message" String="Property 'DdsgntnReqBfrOvrHdgCriticality' of annotation 'UI.FIELDGROUP$1$' in proj./view 'DealRequest' not found"/>
+                                                    <PropertyValue Property="severity" String="error"/>
+                                                </Record>
+                                            </Collection>
+                                        </Annotation>
+                                    </PropertyValue>
+                                    <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/>
+                                    <PropertyValue Property="Value" Path="DealReqBeforeOverHedgeText"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DealReqBfrUtilizationText"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DealRequestTargetQuotaText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgDates">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DocumentPricingPeriodStart"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DocumentPricingPeriodEnd"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DealRequestRemark"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgDocument">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DocumentUUID"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DocumentQuantity"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Label" String="General"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgGeneral">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DocumentCompanyCode"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DealRequestIdentifier"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DealRequestDate"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Label" String="General"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="fgToBe">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Criticality" Path="DealReqAftOvrHdgCriticality"/>
+                                    <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/>
+                                    <PropertyValue Property="Value" Path="DealReqAfterOverHedgeText"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Criticality" Path="DealReqAftUtilznCriticality"/>
+                                    <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/>
+                                    <PropertyValue Property="Value" Path="DealReqAfterUtilizationText"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DealRequestQuantityText"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Criticality" Path="DealItmRclassfctnCritlty"/>
+                                    <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/>
+                                    <PropertyValue Property="Value" Path="DealItmHasRclassfctnApplied"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Deal Requests"/>
+                        <PropertyValue Property="TypeNamePlural" String="Deal Requests"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="Deal Requests"/>
+                                <PropertyValue Property="Value" Path="DocumentCompanyCodeText"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="DocumentCompanyCode"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Set to Created"/>
+                            <PropertyValue Property="Action" String="cds_zap_ui_deal.cds_zap_ui_deal_Entities/SetDealReqStatusToCreate"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Cancel"/>
+                            <PropertyValue Property="Action" String="cds_zap_ui_deal.cds_zap_ui_deal_Entities/SetDealReqStatusToCancel"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Release"/>
+                            <PropertyValue Property="Action" String="cds_zap_ui_deal.cds_zap_ui_deal_Entities/SetDealReqStatusToRelease"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Reject"/>
+                            <PropertyValue Property="Action" String="cds_zap_ui_deal.cds_zap_ui_deal_Entities/SetDealReqStatusToReject"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DealRequestIdentifier"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Set to Created"/>
+                            <PropertyValue Property="Action" String="cds_zap_ui_deal.cds_zap_ui_deal_Entities/SetDealReqStatusToCreate"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Cancel"/>
+                            <PropertyValue Property="Action" String="cds_zap_ui_deal.cds_zap_ui_deal_Entities/SetDealReqStatusToCancel"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DocumentCompanyCode"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Release"/>
+                            <PropertyValue Property="Action" String="cds_zap_ui_deal.cds_zap_ui_deal_Entities/SetDealReqStatusToRelease"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataFieldWithIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="">
+                                <Annotation Term="Core.Messages">
+                                    <Collection>
+                                        <Record>
+                                            <PropertyValue Property="message" String="ERROR: Mandatory Value for Semantic Object not found"/>
+                                            <PropertyValue Property="severity" String="error"/>
+                                        </Record>
+                                    </Collection>
+                                </Annotation>
+                            </PropertyValue>
+                            <PropertyValue Property="Action" String="manage"/>
+                            <PropertyValue Property="Value" Path="DocumentUUID"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Reject"/>
+                            <PropertyValue Property="Action" String="cds_zap_ui_deal.cds_zap_ui_deal_Entities/SetDealReqStatusToReject"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Exposure Quantity"/>
+                            <PropertyValue Property="Value" Path="DocumentQuantity"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DealRequestDate"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Criticality" Path="DealRequestStatusCriticality"/>
+                            <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/>
+                            <PropertyValue Property="Value" Path="DealRequestStatus"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                    <Annotation Term="UI.Criticality" Path="DealRequestStatusCriticality"/>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="DocumentCompanyCode"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="DocumentIdentifier"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="DealRequestStatus"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>DocumentCompanyCode</PropertyPath>
+                        <PropertyPath>DocumentIdentifier</PropertyPath>
+                        <PropertyPath>DealRequestStatus</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.ZAP_C_DocumentUUIDVHType/DocumentUUID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.ZAP_C_DocumentUUIDVHType/DocumenttDifferenceDays">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.ZAP_C_DocumentUUIDVHType/DocumentVersion">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.cds_zap_ui_deal_Entities/SetDealReqStatusToCancel/DealRequestStatusChangeReason">
+                <Annotation Term="UI.MultiLineText"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.cds_zap_ui_deal_Entities/SetDealReqStatusToCreate/DealRequestStatusChangeReason">
+                <Annotation Term="UI.MultiLineText"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.cds_zap_ui_deal_Entities/SetDealReqStatusToReject/DealRequestStatusChangeReason">
+                <Annotation Term="UI.MultiLineText"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_deal.cds_zap_ui_deal_Entities/SetDealReqStatusToRelease/DealRequestStatusChangeReason">
+                <Annotation Term="UI.MultiLineText"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,60 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:my="deal.ext.control">
+	
+	<TableSelectDialog
+		class="sapUiContentPadding"
+		title="{i18n>appTableSelectTitle}"
+		
+		noDataText="{i18n>noDataText}"
+		confirmButtonText="{i18n>addBtn}"
+        multiSelect="true"
+        resizable="true"
+        contentWidth="70%"
+        contentHeight="70%"
+        confirm=".onAdd"
+        search=".onSearch"
+        id="idTableSelectDialog">
+		
+        <columns>
+			<Column
+				minScreenWidth="Tablet"
+				id="idColumnSequence"
+				hAlign="End"
+				demandPopin="true"
+				width="5rem">
+				<Text text="{i18n>colSequence}"/>
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				id="idColumnTransaction"
+				demandPopin="true">
+				<Text text="{i18n>colTransaction}"/>
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				id="idColumnQuantity"
+				hAlign="End"
+				width="7rem"
+				demandPopin="true">
+				<Text text="{i18n>colQuantity}"/>
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				id="idColumnCounterparty"
+				demandPopin="true">
+				<Text text="{i18n>colCounterparty}"/>
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				id="idColumnContractStartDate"
+				hAlign="End"
+				demandPopin="true">
+				<Text text="{i18n>colContractStartDate}"/>
+			</Column>
+		</columns>
+		
+	</TableSelectDialog>
+	
+</core:FragmentDefinition>

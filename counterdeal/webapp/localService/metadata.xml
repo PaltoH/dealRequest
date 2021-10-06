@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://us4.leverx.local:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zap_ui_counterdeal" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_DraftAdministrativeDataType" sap:label="Draft Administration Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="DraftEntityType"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Draft (Technical ID)"/>
+                <Property Name="DraftEntityType" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Draft Entity ID"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CreatedByUserDescription" sap:label="Draft Created By"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="LastChangedByUserDescription" sap:label="Draft Last Changed By"/>
+                <Property Name="DraftAccessType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Draft Access Type"/>
+                <Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft In Process Since"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="InProcessByUserDescription" sap:label="Draft In Process By"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Is Kept By User"/>
+                <Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Locked Since"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Created By Me"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Last Changed By Me"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft In Process By Me"/>
+                <Property Name="CreatedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Created By (Description)"/>
+                <Property Name="LastChangedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Last Changed By (Description)"/>
+                <Property Name="InProcessByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft In Process By (Description)"/>
+            </EntityType>
+            <EntityType Name="DealCandidatesType" sap:label="Dedesignation Candidate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_DealRequestUUID"/>
+                    <PropertyRef Name="DealItemSequenceNumber"/>
+                </Key>
+                <Property Name="P_DealRequestUUID" Type="Edm.Guid" Nullable="false" sap:label="UUID"/>
+                <Property Name="DealItemSequenceNumber" Type="Edm.Int64" Nullable="false" sap:label="Sequence No."/>
+                <Property Name="CandidateUUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="CandidateDocumentIdentifier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document ID"/>
+                <Property Name="CandidateDCSDeal" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Financial Transaction" sap:quickinfo="Char 20"/>
+                <Property Name="CandidateQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="CandidateQuantityUnit" sap:label="Quantity"/>
+                <Property Name="CandidateQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measure" sap:quickinfo="Unit of Measure for the Commodity" sap:semantics="unit-of-measure"/>
+                <Property Name="CandidateCounterparty" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Counterparty" sap:quickinfo="Char 20"/>
+                <Property Name="CandidateContractStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Contract Start Date" sap:quickinfo="Field of type DATS"/>
+                <NavigationProperty Name="Parameters" Relationship="cds_zap_ui_counterdeal.assoc_1C687E6B23B521B846A72FAD3016A6AF" FromRole="ToRole_assoc_1C687E6B23B521B846A72FAD3016A6AF" ToRole="FromRole_assoc_1C687E6B23B521B846A72FAD3016A6AF" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DealCandidatesParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_DealRequestUUID"/>
+                </Key>
+                <Property Name="P_DealRequestUUID" Type="Edm.Guid" Nullable="false" sap:parameter="mandatory" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="cds_zap_ui_counterdeal.assoc_1C687E6B23B521B846A72FAD3016A6AF" FromRole="FromRole_assoc_1C687E6B23B521B846A72FAD3016A6AF" ToRole="ToRole_assoc_1C687E6B23B521B846A72FAD3016A6AF"/>
+            </EntityType>
+            <EntityType Name="CounterDealRequestItemType" sap:label="Counter Deal Request Item Consumption" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CounterDealRequestItemUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="CounterDealRequestItemUUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CounterDealRequestUUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CntrDealRequestRecordItemUuid" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="CounterDealItemLastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
+                <Property Name="CandidateContractStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date" sap:quickinfo="Field of type DATS"/>
+                <Property Name="CandidateCounterparty" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Char20" sap:quickinfo="Char 20"/>
+                <Property Name="CandidateDCSDeal" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Char20" sap:quickinfo="Char 20"/>
+                <Property Name="CandidateQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Qty" sap:quickinfo="Quantity"/>
+                <Property Name="CandidateQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measure" sap:quickinfo="Unit of Measure for the Commodity" sap:semantics="unit-of-measure"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zap_ui_counterdeal.assoc_A34953C2BD10CECB6F047BE6F77379E6" FromRole="FromRole_assoc_A34953C2BD10CECB6F047BE6F77379E6" ToRole="ToRole_assoc_A34953C2BD10CECB6F047BE6F77379E6"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_zap_ui_counterdeal.assoc_5C5FE2AEAC2F262CFF1C520FAC84B24A" FromRole="FromRole_assoc_5C5FE2AEAC2F262CFF1C520FAC84B24A" ToRole="ToRole_assoc_5C5FE2AEAC2F262CFF1C520FAC84B24A"/>
+                <NavigationProperty Name="to_CounterDealRequestTP" Relationship="cds_zap_ui_counterdeal.assoc_A0B5E3BB388065D3A80E34EF453AD3C8" FromRole="FromRole_assoc_A0B5E3BB388065D3A80E34EF453AD3C8" ToRole="ToRole_assoc_A0B5E3BB388065D3A80E34EF453AD3C8"/>
+            </EntityType>
+            <EntityType Name="CounterDealRequestType" sap:label="Counter Deal Request Consumption" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CounterDealRequestUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="SetCntrDealReqStatusToCancel_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetCntrDealReqStatusToCreate_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetCntrDealReqStatusToReject_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetCntrDealReqStatusToRelease_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocumentUUID_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CounterDealRequestUUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CounterDealRequestIdentifier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cntr Deal Request ID" sap:quickinfo="Counter Deal Request ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentUUID" Type="Edm.Guid" sap:field-control="DocumentUUID_fc" sap:text="DocumentIdentifier" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="CounterDealDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Deal Date" sap:quickinfo="Counter Deal Date"/>
+                <Property Name="CounterDealRemark" Type="Edm.String" MaxLength="40" sap:label="Remark"/>
+                <Property Name="DealRequestUUID" Type="Edm.Guid" sap:text="DealRequestIdentifier" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="CounterDealRequestStatus" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:text="CounterDealRequestStatusText" sap:label="Status" sap:quickinfo="Counter Deal Status"/>
+                <Property Name="CntrDealReqStatusChangeReason" Type="Edm.String" MaxLength="255" sap:label="Status Change Reason" sap:quickinfo="Document Status Change Reason"/>
+                <Property Name="CntrDealRequestCreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CntrDealCrtdByUserDescription" sap:label="User Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CntrDealRequestCreatedDatetime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CntrDealRequestChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CntrDealChngdByUserDescription" sap:label="User Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CntrDealRequestChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CntrDealReqStatusCriticality" Type="Edm.Byte"/>
+                <Property Name="CntrDealReqChangeDocumentID" Type="Edm.String" MaxLength="32"/>
+                <Property Name="DocumentCompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="DocumentCompanyCodeText" sap:label="Company Code" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentIdentifier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="DocumentQuantityUnit" sap:label="Qty" sap:quickinfo="Quantity" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:creatable="false" sap:updatable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="DocumentDirection" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Direction" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentPricingPeriodStart" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Pricing Period Start" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentPricingPeriodEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Pricing Period End" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CntrDealRefRequestIsHidden" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Truth Value" sap:quickinfo="Truth Value: True/False"/>
+                <Property Name="CounterDealRequestStatusText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CntrDealChngdByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="User Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CntrDealCrtdByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="User Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentCompanyCodeText" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DealRequestIdentifier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Deal Request ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zap_ui_counterdeal.assoc_384D472272F51883B2E6F7205B4BDA08" FromRole="FromRole_assoc_384D472272F51883B2E6F7205B4BDA08" ToRole="ToRole_assoc_384D472272F51883B2E6F7205B4BDA08"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_zap_ui_counterdeal.assoc_99F3683C9DF7DFAFC7ACDC39F69F7860" FromRole="FromRole_assoc_99F3683C9DF7DFAFC7ACDC39F69F7860" ToRole="ToRole_assoc_99F3683C9DF7DFAFC7ACDC39F69F7860"/>
+                <NavigationProperty Name="to_CounterDealItem" Relationship="cds_zap_ui_counterdeal.assoc_13F68421AD202F19D7C1284B8126247B" FromRole="FromRole_assoc_13F68421AD202F19D7C1284B8126247B" ToRole="ToRole_assoc_13F68421AD202F19D7C1284B8126247B"/>
+            </EntityType>
+            <EntityType Name="CompanyCodeVHType" sap:label="Document Complany Code" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+            </EntityType>
+            <ComplexType Name="DummyFunctionImportResult">
+                <Property Name="IsInvalid" Type="Edm.Boolean" sap:label="TRUE"/>
+            </ComplexType>
+            <Association Name="assoc_1C687E6B23B521B846A72FAD3016A6AF" sap:content-version="1">
+                <End Type="cds_zap_ui_counterdeal.DealCandidatesParameters" Multiplicity="1" Role="FromRole_assoc_1C687E6B23B521B846A72FAD3016A6AF"/>
+                <End Type="cds_zap_ui_counterdeal.DealCandidatesType" Multiplicity="*" Role="ToRole_assoc_1C687E6B23B521B846A72FAD3016A6AF"/>
+            </Association>
+            <Association Name="assoc_384D472272F51883B2E6F7205B4BDA08" sap:content-version="1">
+                <End Type="cds_zap_ui_counterdeal.CounterDealRequestType" Multiplicity="1" Role="FromRole_assoc_384D472272F51883B2E6F7205B4BDA08"/>
+                <End Type="cds_zap_ui_counterdeal.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_384D472272F51883B2E6F7205B4BDA08"/>
+            </Association>
+            <Association Name="assoc_99F3683C9DF7DFAFC7ACDC39F69F7860" sap:content-version="1">
+                <End Type="cds_zap_ui_counterdeal.CounterDealRequestType" Multiplicity="1" Role="FromRole_assoc_99F3683C9DF7DFAFC7ACDC39F69F7860"/>
+                <End Type="cds_zap_ui_counterdeal.CounterDealRequestType" Multiplicity="0..1" Role="ToRole_assoc_99F3683C9DF7DFAFC7ACDC39F69F7860"/>
+            </Association>
+            <Association Name="assoc_13F68421AD202F19D7C1284B8126247B" sap:content-version="1">
+                <End Type="cds_zap_ui_counterdeal.CounterDealRequestType" Multiplicity="1" Role="FromRole_assoc_13F68421AD202F19D7C1284B8126247B">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zap_ui_counterdeal.CounterDealRequestItemType" Multiplicity="*" Role="ToRole_assoc_13F68421AD202F19D7C1284B8126247B"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_13F68421AD202F19D7C1284B8126247B">
+                        <PropertyRef Name="CounterDealRequestUUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_13F68421AD202F19D7C1284B8126247B">
+                        <PropertyRef Name="CounterDealRequestUUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_A34953C2BD10CECB6F047BE6F77379E6" sap:content-version="1">
+                <End Type="cds_zap_ui_counterdeal.CounterDealRequestItemType" Multiplicity="1" Role="FromRole_assoc_A34953C2BD10CECB6F047BE6F77379E6"/>
+                <End Type="cds_zap_ui_counterdeal.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_A34953C2BD10CECB6F047BE6F77379E6"/>
+            </Association>
+            <Association Name="assoc_5C5FE2AEAC2F262CFF1C520FAC84B24A" sap:content-version="1">
+                <End Type="cds_zap_ui_counterdeal.CounterDealRequestItemType" Multiplicity="1" Role="FromRole_assoc_5C5FE2AEAC2F262CFF1C520FAC84B24A"/>
+                <End Type="cds_zap_ui_counterdeal.CounterDealRequestItemType" Multiplicity="0..1" Role="ToRole_assoc_5C5FE2AEAC2F262CFF1C520FAC84B24A"/>
+            </Association>
+            <Association Name="assoc_A0B5E3BB388065D3A80E34EF453AD3C8" sap:content-version="1">
+                <End Type="cds_zap_ui_counterdeal.CounterDealRequestItemType" Multiplicity="1" Role="FromRole_assoc_A0B5E3BB388065D3A80E34EF453AD3C8"/>
+                <End Type="cds_zap_ui_counterdeal.CounterDealRequestType" Multiplicity="1" Role="ToRole_assoc_A0B5E3BB388065D3A80E34EF453AD3C8"/>
+            </Association>
+            <EntityContainer Name="cds_zap_ui_counterdeal_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_DraftAdministrativeData" EntityType="cds_zap_ui_counterdeal.I_DraftAdministrativeDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="DealCandidatesSet" EntityType="cds_zap_ui_counterdeal.DealCandidatesType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="DealCandidates" EntityType="cds_zap_ui_counterdeal.DealCandidatesParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CounterDealRequestItem" EntityType="cds_zap_ui_counterdeal.CounterDealRequestItemType" sap:content-version="1"/>
+                <EntitySet Name="CounterDealRequest" EntityType="cds_zap_ui_counterdeal.CounterDealRequestType" sap:content-version="1" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="CompanyCodeVH" EntityType="cds_zap_ui_counterdeal.CompanyCodeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_384D472272F51883B2E6F7205B4BDA08" Association="cds_zap_ui_counterdeal.assoc_384D472272F51883B2E6F7205B4BDA08" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CounterDealRequest" Role="FromRole_assoc_384D472272F51883B2E6F7205B4BDA08"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_384D472272F51883B2E6F7205B4BDA08"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_13F68421AD202F19D7C1284B8126247B" Association="cds_zap_ui_counterdeal.assoc_13F68421AD202F19D7C1284B8126247B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CounterDealRequest" Role="FromRole_assoc_13F68421AD202F19D7C1284B8126247B"/>
+                    <End EntitySet="CounterDealRequestItem" Role="ToRole_assoc_13F68421AD202F19D7C1284B8126247B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_99F3683C9DF7DFAFC7ACDC39F69F7860" Association="cds_zap_ui_counterdeal.assoc_99F3683C9DF7DFAFC7ACDC39F69F7860" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CounterDealRequest" Role="FromRole_assoc_99F3683C9DF7DFAFC7ACDC39F69F7860"/>
+                    <End EntitySet="CounterDealRequest" Role="ToRole_assoc_99F3683C9DF7DFAFC7ACDC39F69F7860"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A34953C2BD10CECB6F047BE6F77379E6" Association="cds_zap_ui_counterdeal.assoc_A34953C2BD10CECB6F047BE6F77379E6" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CounterDealRequestItem" Role="FromRole_assoc_A34953C2BD10CECB6F047BE6F77379E6"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_A34953C2BD10CECB6F047BE6F77379E6"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_1C687E6B23B521B846A72FAD3016A6AF" Association="cds_zap_ui_counterdeal.assoc_1C687E6B23B521B846A72FAD3016A6AF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DealCandidates" Role="FromRole_assoc_1C687E6B23B521B846A72FAD3016A6AF"/>
+                    <End EntitySet="DealCandidatesSet" Role="ToRole_assoc_1C687E6B23B521B846A72FAD3016A6AF"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A0B5E3BB388065D3A80E34EF453AD3C8" Association="cds_zap_ui_counterdeal.assoc_A0B5E3BB388065D3A80E34EF453AD3C8" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CounterDealRequestItem" Role="FromRole_assoc_A0B5E3BB388065D3A80E34EF453AD3C8"/>
+                    <End EntitySet="CounterDealRequest" Role="ToRole_assoc_A0B5E3BB388065D3A80E34EF453AD3C8"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5C5FE2AEAC2F262CFF1C520FAC84B24A" Association="cds_zap_ui_counterdeal.assoc_5C5FE2AEAC2F262CFF1C520FAC84B24A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CounterDealRequestItem" Role="FromRole_assoc_5C5FE2AEAC2F262CFF1C520FAC84B24A"/>
+                    <End EntitySet="CounterDealRequestItem" Role="ToRole_assoc_5C5FE2AEAC2F262CFF1C520FAC84B24A"/>
+                </AssociationSet>
+                <FunctionImport Name="CounterDealRequestActivate" ReturnType="cds_zap_ui_counterdeal.CounterDealRequestType" EntitySet="CounterDealRequest" m:HttpMethod="POST" sap:action-for="cds_zap_ui_counterdeal.CounterDealRequestType">
+                    <Parameter Name="CounterDealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="CreateCounterDealRequest" ReturnType="cds_zap_ui_counterdeal.CounterDealRequestType" EntitySet="CounterDealRequest" m:HttpMethod="POST">
+                    <Parameter Name="DocumentIdentifier" Type="Edm.String" Mode="In" MaxLength="10" sap:value-list="standard"/>
+                    <Parameter Name="CounterDealDate" Type="Edm.DateTime" Mode="In" Precision="0" sap:display-format="Date"/>
+                    <Parameter Name="DocumentUUID" Type="Edm.Guid" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="CreateInstanceCntrDealRequest" ReturnType="cds_zap_ui_counterdeal.CounterDealRequestType" EntitySet="CounterDealRequest" m:HttpMethod="POST">
+                    <Parameter Name="ResultIsActiveEntity" Type="Edm.Boolean" Mode="In" Nullable="true"/>
+                    <Parameter Name="DocumentIdentifier" Type="Edm.String" Mode="In" MaxLength="10" Nullable="true" sap:value-list="standard"/>
+                    <Parameter Name="CounterDealDate" Type="Edm.DateTime" Mode="In" Precision="0" Nullable="true" sap:display-format="Date"/>
+                    <Parameter Name="DocumentUUID" Type="Edm.Guid" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="CounterDealRequestDiscard" ReturnType="cds_zap_ui_counterdeal.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zap_ui_counterdeal.CounterDealRequestType">
+                    <Parameter Name="CounterDealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="CounterDealRequestEdit" ReturnType="cds_zap_ui_counterdeal.CounterDealRequestType" EntitySet="CounterDealRequest" m:HttpMethod="POST" sap:action-for="cds_zap_ui_counterdeal.CounterDealRequestType">
+                    <Parameter Name="CounterDealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="CounterDealRequestPrepare" ReturnType="cds_zap_ui_counterdeal.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zap_ui_counterdeal.CounterDealRequestType">
+                    <Parameter Name="CounterDealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="CounterDealRequestResume" ReturnType="cds_zap_ui_counterdeal.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zap_ui_counterdeal.CounterDealRequestType">
+                    <Parameter Name="CounterDealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="SetCntrDealReqStatusToCancel" ReturnType="cds_zap_ui_counterdeal.CounterDealRequestType" EntitySet="CounterDealRequest" m:HttpMethod="POST" sap:action-for="cds_zap_ui_counterdeal.CounterDealRequestType" sap:applicable-path="SetCntrDealReqStatusToCancel_ac">
+                    <Parameter Name="CounterDealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="CntrDealReqStatusChangeReason" Type="Edm.String" Mode="In" MaxLength="255" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="SetCntrDealReqStatusToCreate" ReturnType="cds_zap_ui_counterdeal.CounterDealRequestType" EntitySet="CounterDealRequest" m:HttpMethod="POST" sap:action-for="cds_zap_ui_counterdeal.CounterDealRequestType" sap:applicable-path="SetCntrDealReqStatusToCreate_ac">
+                    <Parameter Name="CounterDealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="CntrDealReqStatusChangeReason" Type="Edm.String" Mode="In" MaxLength="255" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="SetCntrDealReqStatusToReject" ReturnType="cds_zap_ui_counterdeal.CounterDealRequestType" EntitySet="CounterDealRequest" m:HttpMethod="POST" sap:action-for="cds_zap_ui_counterdeal.CounterDealRequestType" sap:applicable-path="SetCntrDealReqStatusToReject_ac">
+                    <Parameter Name="CounterDealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="CntrDealReqStatusChangeReason" Type="Edm.String" Mode="In" MaxLength="255" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="SetCntrDealReqStatusToRelease" ReturnType="cds_zap_ui_counterdeal.CounterDealRequestType" EntitySet="CounterDealRequest" m:HttpMethod="POST" sap:action-for="cds_zap_ui_counterdeal.CounterDealRequestType" sap:applicable-path="SetCntrDealReqStatusToRelease_ac">
+                    <Parameter Name="CounterDealRequestUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="CntrDealReqStatusChangeReason" Type="Edm.String" Mode="In" MaxLength="255" Nullable="true"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations Target="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/CounterDealRequest" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/CounterDealRequestActivate"/>
+                        <PropertyValue Property="NewAction" String="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/CreateInstanceCntrDealRequest"/>
+                        <PropertyValue Property="DiscardAction" String="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/CounterDealRequestDiscard"/>
+                        <PropertyValue Property="EditAction" String="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/CounterDealRequestEdit"/>
+                        <PropertyValue Property="PreparationAction" String="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/CounterDealRequestPrepare"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>SetCntrDealReqStatusToCancel_ac</PropertyPath>
+                                <PropertyPath>SetCntrDealReqStatusToCreate_ac</PropertyPath>
+                                <PropertyPath>SetCntrDealReqStatusToReject_ac</PropertyPath>
+                                <PropertyPath>SetCntrDealReqStatusToRelease_ac</PropertyPath>
+                                <PropertyPath>DocumentUUID_fc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CounterDealItem"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>SetCntrDealReqStatusToCancel_ac</PropertyPath>
+                                <PropertyPath>SetCntrDealReqStatusToCreate_ac</PropertyPath>
+                                <PropertyPath>SetCntrDealReqStatusToReject_ac</PropertyPath>
+                                <PropertyPath>SetCntrDealReqStatusToRelease_ac</PropertyPath>
+                                <PropertyPath>DocumentUUID_fc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/CounterDealRequestItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/CounterDealRequest</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_counterdeal.CounterDealRequestItemType/CntrDealRequestRecordItemUuid" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_counterdeal.CounterDealRequestType/CounterDealDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/CreateCounterDealRequest/CounterDealDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/CreateCounterDealRequest/DocumentIdentifier" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/CreateInstanceCntrDealRequest/CounterDealDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/CreateInstanceCntrDealRequest/DocumentIdentifier" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zap_ui_counterdeal.cds_zap_ui_counterdeal_Entities/DealCandidates" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_DealRequestUUID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CounterDealItem"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_DealRequestUUID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://us4.leverx.local:8000/sap/opu/odata/sap/ZAP_UI_COUNTERDEAL/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://us4.leverx.local:8000/sap/opu/odata/sap/ZAP_UI_COUNTERDEAL/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Toolbar id="idTebleSelectToolbar">
+		<HBox id="idTebleSelectToolbarContainer">
+			<HBox class="sapUiMediumMarginEnd" id="idOverhedgeBox">
+				<Label text="{i18n>overhedge}" class="sapUiTinyMarginEnd" id="idOverhedgeLabel"/>
+				<Text text="{DdsgntnReqBeforeOverHedgeText}" id="idOverhedgeText"/>
+			</HBox>
+			<HBox class="sapUiMediumMarginEnd" id="idUtilizationBox">
+				<Label text="{i18n>utilization}" class="sapUiTinyMarginEnd" id="idUtilizationLabel"/>
+				<Text text="{DdsgntnReqBfrUtilizationText}" id="idUtilizationText"/>
+			</HBox>
+			<HBox class="sapUiMediumMarginEnd" id="idTargetQuotaBox">
+				<Label text="{i18n>targetQuota}" class="sapUiTinyMarginEnd" id="idTargetQuotaLabel"/>
+				<Text text="{DdsgntnRequestTargetQuotaText}" id="idTargetQuotaText"/>
+			</HBox>
+		</HBox>
+	</Toolbar>
+</core:FragmentDefinition>

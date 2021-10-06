@@ -14,19 +14,15 @@ sap.ui.define([
 		 * @public
 		 */
 		onInit: function () {
-			var oAddButton = Core.byId("deal::sap.suite.ui.generic.template.ObjectPage.view.Details::DealRequest--idItems::action::");
+			var oAddButton = Core.byId("counterdeal::sap.suite.ui.generic.template.ObjectPage.view.Details::CounterDealRequest--idItems::action::");
 			oAddButton.attachPress(this.onShowSelectDialog, this);
 			
-			var oTableCand = Core.byId("deal::sap.suite.ui.generic.template.ObjectPage.view.Details::DealRequest--idItems::Table");
-			oTableCand.setRequestAtLeastFields(["DealRequestRecordItemUUID", "DealItemSequenceNumber", "DealItemUUID"]);
+			var oTableCand = Core.byId("counterdeal::sap.suite.ui.generic.template.ObjectPage.view.Details::CounterDealRequest--idItems::Table");
+			oTableCand.setRequestAtLeastFields(["CntrDealRequestRecordItemUuid", "CounterDealRequestItemUUID"]);
 			oTableCand.setUseExportToExcel(true);
 			
-			var oTableHistory = Core.byId("deal::sap.suite.ui.generic.template.ObjectPage.view.Details::DealRequest--idStatusFacet::Table");
-			oTableHistory.setUseExportToExcel(true);
-
 			var oModel = this.getOwnerComponent().getModel();
-			oModel.attachBatchRequestCompleted(this._batchRequestCompletedController, this);
-			
+			oModel.attachBatchRequestCompleted(this._batchRequestCompletedController, this)
 		
 		},
 		
@@ -47,79 +43,17 @@ sap.ui.define([
 		 * @return table object.
 		 */
 		_getTransactionsTable: function () {
-			return Core.byId("deal::sap.suite.ui.generic.template.ObjectPage.view.Details::DealRequest--idItems::responsiveTable");
+			return Core.byId("counterdeal::sap.suite.ui.generic.template.ObjectPage.view.Details::CounterDealRequest--idItems::responsiveTable");
 		},
-		
-		/**
-		 * Call need functions based on batch requests.
-		 * @private
-		 * @param {sap.ui.base.Event} oEvent event object.
-		 */
-		_batchRequestCompletedController: function (oEvent) {
-			var aRequest = oEvent.getParameter("requests");
-			if (aRequest && aRequest[0] && aRequest[0].url) {
-				var sUrl = aRequest[0].url;
-				var sMethod = aRequest[0].method;
-				if (sUrl.includes("SetDealReqStatusToCreate") || 
-					sUrl.includes("SetDealReqStatusToRelease") || 
-					sUrl.includes("SetDealReqStatusToReject") || 
-					sUrl.includes("SetDealReqStatusToCancel")) {
-						this._refreshStatusesFacet();
-				}
-				if (sUrl.includes("/to_DealItem")) {
-					this._checkLength();
-				}
-			if (sMethod === "MERGE" || sUrl.includes("DetmReclassificationHandling") || sUrl.includes("ResetDefaultProposedCandidates")) {
-					this._refreshTransactionsFacet();
-				}
-			}
-		},
-		
-		/**
-		 * Compare initial table length and current table length.
-		 * @private
-		 */
-		_checkLength: function () {
-			var nCurrentTableLength = this._getTransactionsTable().getItems().length;
-			if (nCurrentTableLength < this.nInitialItemsLength) {
-				this._updateDealItemIntSequenceNumber();
-			}
-			this.nInitialItemsLength = nCurrentTableLength;
-		},
-
 		
 	
-
-		/**
-		 * Put new value for property - ItemIntSequenceNumber into all table items.
-		 * @private
-		 */
-		_updateDealItemIntSequenceNumber: function () {
-			var oTable = this._getTransactionsTable();
-			var aContexts = oTable.getItems();
-			var aObj = aContexts.map(function(item){
-				 	return item.getBindingContext().getObject();
-			});
-			var sUrl = "/DealRequestItem(DealItemUUID=guid'{DealItemUUID}',IsActiveEntity={IsActive})";
-			
-			for (var i = 0; i < aObj.length; i++) {
-				if (aObj[i]) {
-					var sDealItemUUID = aObj[i].DealItemUUID;
-					var bIsActive =  aObj[i].IsActiveEntity;
-					oTable.getModel().update(sUrl.replace("{DealItemUUID}", sDealItemUUID).replace("{IsActive}", bIsActive), 
-					{DealItemInternalSequenceNumber: i + 1 + ""});
-				}
-			}
-		},
-	
-		
 		/**
 		 * Update info in transactions facet.
 		 * @private
 		 */
 		_refreshTransactionsFacet: function () {
 			this.extensionAPI.refresh(
-				"deal::sap.suite.ui.generic.template.ObjectPage.view.Details::DealRequest--idItems::responsiveTable"
+				"counterdeal::sap.suite.ui.generic.template.ObjectPage.view.Details::CounterDealRequest--idItems::responsiveTable"
 			);
 		},
 		
@@ -134,17 +68,14 @@ sap.ui.define([
 			if (!this._oDialog) {
 				this._oDialog = Fragment.load({
 					id: oView.getId(),
-					name: "deal.ext.Fragments.TableSelect",
+					name: "counterdeal.ext.Fragments.TableSelect",
 					controller: this
 				}).then(function(oDialog){
 					oView.addDependent(oDialog);
-					var oTableSelectTable = this.oTableSelectTable = Core.byId("deal::sap.suite.ui.generic.template.ObjectPage.view.Details::DealRequest--idTableSelectDialog-table");
-					var sNewBindingPath = "/DealCandidates(P_DealRequestUUID=guid'" + oView.getBindingContext().getObject("DealRequestUUID") + "')/Set";
+					var oTableSelectTable = this.oTableSelectTable = Core.byId("counterdeal::sap.suite.ui.generic.template.ObjectPage.view.Details::CounterDealRequest--idTableSelectDialog-table");
+					var sNewBindingPath = "/CounterDealCandidates(P_CounterDealRequestUUID=guid'" + oView.getBindingContext().getObject("CounterDealRequestUUID") + "')/Set";
 					oTableSelectTable.bindAggregation("items", sNewBindingPath, new sap.m.ColumnListItem({
 						cells: [
-							new sap.m.Text({
-								text:"{DealItemSequenceNumber}"
-							}),
 							new sap.m.Text({
 								text:"{CandidateDCSDeal}"
 							}),
@@ -177,10 +108,10 @@ sap.ui.define([
 			this._oDialog.then(function (oDialog){
 				oDialog.open();
 				if (!this.oTableSelectHeaderContent) {
-					var oTableSelect = Core.byId("deal::sap.suite.ui.generic.template.ObjectPage.view.Details::DealRequest--idTableSelectDialog-dialog");
+					var oTableSelect = Core.byId("counterdeal::sap.suite.ui.generic.template.ObjectPage.view.Details::CounterDealRequest--idTableSelectDialog-dialog");
 					this.oTableSelectHeaderContent = Fragment.load({
 						id: oView.getId(),
-						name: "deal.ext.Fragments.SubHeader",
+						name: "counterdeal.ext.Fragments.SubHeader",
 						controller: this
 					}).then(function(oSubHeader){
 						var oTableSelectContent = oTableSelect.getContent();
@@ -211,19 +142,18 @@ sap.ui.define([
 			if (aContexts && aContexts.length) {
 				for (var i = 0; i < aContexts.length; i++) {
 					var oDrCand = aContexts[i].getObject();
-					var sUrl = "/DealRequest(DealRequestUUID=guid'{UUIDNumber}',IsActiveEntity={bIsActive})/to_DealItem";
-					var sUUIDNumber = oCtx.getObject("DealRequestUUID");
+					var sUrl = "/CounterDealRequest(CounterDealRequestUUID=guid'{UUIDNumber}',IsActiveEntity={bIsActive})/to_DealItem";
+					var sUUIDNumber = oCtx.getObject("CounterDealRequestUUID");
 					var bIsActive = oCtx.getObject("IsActiveEntity");
 					var sDealItemIntSequenceNumber = this._getTransactionsTable().getItems().length + 1 + i + "";
 					
 					oODataModel.create(sUrl.replace("{UUIDNumber}", sUUIDNumber).replace("{bIsActive}", bIsActive), {
 							CandidateContractStartDate: oDrCand.CandidateContractStartDate,
+							CandidateDCSDeal: oDrCand.CandidateDCSDeal,
 							CandidateQuantity: oDrCand.CandidateQuantity,
 							CandidateQuantityUnit: oDrCand.CandidateQuantityUnit,
 							CandidateCounterparty: oDrCand.CandidateCounterparty,
-							DealRequestRecordItemUUID: oDrCand.CandidateUUID,
-							DealItemSequenceNumber: oDrCand.DealItemSequenceNumber,
-							DealItemInternalSequenceNumber: oDrCand.DealItemSequenceNumber
+							CntrDealRequestRecordItemUUID: oDrCand.CandidateUUID,
 					}, {
 							success: function(result){
 								this._refreshTransactionsFacet();
@@ -247,11 +177,11 @@ sap.ui.define([
 			
 			if (sValue) {
 				if (isNaN(sValue) && sValue) {
-					aSearchFilters.push(new Filter("CandidateDCSDeal", "Contains", sValue));
+					aSearchFilters.push(new Filter("CandidateDcsDeal", "Contains", sValue));
 					aSearchFilters.push(new Filter("CandidateCounterparty", "Contains", sValue));
 				} else if (!isNaN(sValue) && sValue) {
 					aSearchFilters.push(new Filter("CandidateQuantity", "EQ", +sValue));
-					aSearchFilters.push(new Filter("CandidateDCSDeal", "Contains", sValue));
+					aSearchFilters.push(new Filter("CandidateDcsDeal", "Contains", sValue));
 					aSearchFilters.push(new Filter("CandidateCounterparty", "Contains", sValue));
 				}
 			}
@@ -259,15 +189,7 @@ sap.ui.define([
 		},
 		
 		
-		/**
-		 * Update info in status history facet.
-		 * @private
-		 */
-		_refreshStatusesFacet: function () {
-			this.extensionAPI.refresh(
-				"deal::sap.suite.ui.generic.template.ObjectPage.view.Details::DealRequest--idStatusFacet::responsiveTable"
-			);
-		}
+
 		
 	});
 });
